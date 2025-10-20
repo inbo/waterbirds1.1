@@ -1,0 +1,42 @@
+species;common_name;body_mass;diet;loader
+Fulica atra;Eurasian Coot;782;herbivore;NA
+Anas crecca;Common Teal;315;herbivore;NA
+Anas penelope;Eurasian Wigeon;716;herbivore;NA
+Anas acuta;Northern Pintail;793;herbivore;NA
+Anas strepera;Gadwall;774;herbivore;NA
+Anas platyrhynchos;Mallard;1078;herbivore;NA
+Anas platyrhynchos domesticus;Feral duck;1078;herbivore;NA
+Alopochen aegyptiacus;Egyptian Goose;1863;herbivore;NA
+Anser albifrons;Greater White-fronted Goose;2018;herbivore;NA
+Anser brachyrhynchus;Pink-footed Goose;2344;herbivore;NA
+Anser anser;Greylag Goose;3465;herbivore;NA
+Anser anser domesticus;Feral goose;3465;herbivore;NA
+Anser erythropus;Lesser White-fronted Goose;1410;herbivore;NA
+Anser fabalis;Taiga Bean Goose;3020;herbivore;NA
+Anser serrirostris;Tundra Bean Goose;2521;herbivore;NA
+Anser indicus;Bar-headed Goose;2600;herbivore;NA
+Anser cygnoides;Swan Goose;3150;herbivore;NA
+Anser caerulescens;Snow Goose;2631;herbivore;NA
+Branta bernicla;Brent goose;1464;herbivore;NA
+Branta hrota;Pale-Bellied Brent Goose;1489;herbivore;NA
+Branta leucopsis;Barnacle Goose;1586;herbivore;NA
+Branta c. canadensis;Canada Goose;4635;herbivore;NA
+Cygnus atratus;Black Swan;5650;herbivore;NA
+Cygnus columbianus;Tundra Swan;6050;herbivore;NA
+Cygnus olor;Mute Swan;10750;herbivore;NA
+Cygnus cygnus;Whooper Swan;9150;herbivore;NA
+Ardea cinerea;Grey Heron;1433;vertebrates;internal
+Phalacrocorax carbo;Great Cormorant;2254;vertebrates;internal
+Larus minutus;Little Gull;99;mix (in)vertebrates;external
+Larus ridibundus;Black-headed Gull;275;mix (in)vertebrates;external
+Larus melanocephalus;Mediterranean Gull;273;mix (in)vertebrates;external
+Larus canus;Mew Gull;387;mix (in)vertebrates;external
+Larus fuscus;Lesser Black-backed Gull;792;mix (in)vertebrates;external
+Larus cachinnans;Caspian Gull;916;mix (in)vertebrates;external
+Larus argentatus;Herring Gull;958;vertebrates;external
+Larus michahellis;Yellow-legged Gull;1154;mix (in)vertebrates;external
+Larus marinus;Great Black-backed Gull;1600;mix (in)vertebrates;external
+Rissa tridactyla;Black-legged Kittiwake;418;vertebrates;internal
+Sterna paradisaea;Arctic Tern;110;vertebrates;internal
+Sterna hirundo;Common Tern;133;vertebrates;internal
+Sterna sandvicensis;Sandwich Tern;237;vertebrates;internal

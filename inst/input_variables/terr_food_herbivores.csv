@@ -1,0 +1,79 @@
+species;season;f_t
+Fulica atra;spring;0,25
+Fulica atra;summer;0,00
+Fulica atra;winter;0,50
+Anas crecca;spring;0,25
+Anas crecca;summer;0,00
+Anas crecca;winter;0,25
+Anas penelope;spring;1,00
+Anas penelope;summer;0,00
+Anas penelope;winter;1,00
+Anas acuta;spring;0,00
+Anas acuta;summer;0,00
+Anas acuta;winter;0,25
+Anas strepera;spring;0,00
+Anas strepera;summer;0,00
+Anas strepera;winter;0,25
+Anas platyrhynchos;spring;0,50
+Anas platyrhynchos;summer;0,00
+Anas platyrhynchos;winter;0,75
+Anas platyrhynchos domesticus;spring;0,50
+Anas platyrhynchos domesticus;summer;0,00
+Anas platyrhynchos domesticus;winter;0,75
+Alopochen aegyptiacus;spring;1,00
+Alopochen aegyptiacus;summer;1,00
+Alopochen aegyptiacus;winter;1,00
+Anser albifrons;spring;1,00
+Anser albifrons;summer;1,00
+Anser albifrons;winter;1,00
+Anser brachyrhynchus;spring;1,00
+Anser brachyrhynchus;summer;1,00
+Anser brachyrhynchus;winter;1,00
+Anser anser;spring;1,00
+Anser anser;summer;0,75
+Anser anser;winter;1,00
+Anser anser domesticus;spring;1,00
+Anser anser domesticus;summer;0,75
+Anser anser domesticus;winter;1,00
+Anser erythropus;spring;1,00
+Anser erythropus;summer;1,00
+Anser erythropus;winter;1,00
+Anser fabalis;spring;1,00
+Anser fabalis;summer;1,00
+Anser fabalis;winter;1,00
+Anser serrirostris;spring;1,00
+Anser serrirostris;summer;1,00
+Anser serrirostris;winter;1,00
+Anser indicus;spring;1,00
+Anser indicus;summer;1,00
+Anser indicus;winter;1,00
+Anser cygnoides;spring;1,00
+Anser cygnoides;summer;1,00
+Anser cygnoides;winter;1,00
+Anser caerulescens;spring;1,00
+Anser caerulescens;summer;1,00
+Anser caerulescens;winter;1,00
+Branta bernicla;spring;0,25
+Branta bernicla;summer;0,00
+Branta bernicla;winter;0,00
+Branta hrota;spring;0,25
+Branta hrota;summer;0,00
+Branta hrota;winter;0,00
+Branta leucopsis;spring;1,00
+Branta leucopsis;summer;1,00
+Branta leucopsis;winter;1,00
+Branta c. canadensis;spring;1,00
+Branta c. canadensis;summer;1,00
+Branta c. canadensis;winter;1,00
+Cygnus atratus;spring;0,25
+Cygnus atratus;summer;0,25
+Cygnus atratus;winter;0,25
+Cygnus columbianus;spring;1,00
+Cygnus columbianus;summer;0,00
+Cygnus columbianus;winter;0,75
+Cygnus olor;spring;0,50
+Cygnus olor;summer;0,25
+Cygnus olor;winter;1,00
+Cygnus cygnus;spring;0,50
+Cygnus cygnus;summer;0,00
+Cygnus cygnus;winter;0,75

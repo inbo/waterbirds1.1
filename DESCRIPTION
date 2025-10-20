@@ -10,6 +10,12 @@ Description: Tool to calculate the nutrient input by waterbirds, based on the to
 License: GPL-3
 URL: https://github.com/inbo/waterbirds1.1
 BugReports: https://github.com/inbo/waterbirds1.1/issues
+Imports:
+  assertthat
+Suggests:
+  knitr
+VignetteBuilder:
+  knitr
 Encoding: UTF-8
 Config/checklist/keywords: waterbirds; nutrients
 Language: en-GB
