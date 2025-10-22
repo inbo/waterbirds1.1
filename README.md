@@ -27,8 +27,11 @@ size](https://img.shields.io/github/repo-size/inbo/waterbirds1.1.svg)
 
 # waterbirds1.1
 
-The goal of waterbirds1.1 is to calculate nutrients deposited by
-waterbirds
+The goal of waterbirds1.1 is to calculate the nutrient input by
+waterbirds, based on the tool Waterbirds v1.1 (2007) from S. Bauwer & S.
+Hahn, Netherlands Institute of Ecology (NIOO-KNAW) and the related
+publications Hahn et al. (2007, Freshwater Biology) and Hahn et
+al. (2008, Freshwater Biology).
 
 ## Installation
 

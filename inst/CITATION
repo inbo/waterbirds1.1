@@ -1,0 +1,13 @@
+citHeader("To cite `waterbirds1.1` in publications please use:")
+# begin checklist entry
+bibentry(
+  bibtype = "Manual",
+  title = "waterbirds1.1: Nutrient Input by Waterbirds. Version 0.0.0",
+  author = c( author = c(person(given = "Els", family = "Lommelen"))),
+  year = 2025,
+  url = "https://github.com/inbo/waterbirds1.1/",
+  abstract = "Tool to calculate the nutrient input by waterbirds, based on the tool Waterbirds v1.1 (2007) from S. Bauwer & S. Hahn, Netherlands Institute of Ecology (NIOO-KNAW) and the related publications Hahn et al. (2007, Freshwater Biology) and Hahn et al. (2008, Freshwater Biology).",
+  textVersion = "Lommelen, Els (2025) waterbirds1.1: Nutrient Input by Waterbirds. Version 0.0.0. https://github.com/inbo/waterbirds1.1/",
+  keywords = "waterbirds; nutrients",
+)
+# end checklist entry
