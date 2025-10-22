@@ -4,14 +4,14 @@
 #' by herbivorous waterbirds based on mass-specific energy requirement and
 #' daily food intake (intake model).
 #'
-#' @param species_name (vector of) scientific name of the herbivorous waterbird
-#'   species (without author name)
+#' @param species_name (vector of) scientific name(s) of the herbivorous
+#'   waterbird species (without author name)
 #' @param n_individuals (vector of) number of individuals of the species that
-#'   are present on the waterbody
+#'   are present on the water body
 #' @param n_days (vector of) number of days that the individuals of the species
-#'   are present on the waterbody
+#'   are present on the water body
 #' @param var_season (vector of) season(s) in which the given individuals of the
-#'   species are present on the waterbody.
+#'   species are present on the water body.
 #'   Possible values are `spring`, `summer` and `winter`.
 #' @param type_food (vector of) type of food that is eaten by the species.
 #'   Defaults to `grass`, the other option is `beet`.
@@ -33,7 +33,7 @@
 #' @param var_food table (data.frame) on food types with at least columns
 #'   `food` (with values grass and beet),
 #'   `enery` (energy content of the terrestrial diet in kJ/g),
-#'   `AM` (apparent metabolizable energy coëfficiënt) and
+#'   `AM` (apparent metabolizable energy coefficient) and
 #'   `N25`, `N50`, `N75`, `P25`, `P50` and `P75` (low (25th percentile),
 #'   average (mean) and high (75th percentile) level of nitrogen (N) or
 #'   phosphorus (P) in the food type.

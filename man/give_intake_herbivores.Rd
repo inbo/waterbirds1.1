@@ -21,17 +21,17 @@ give_intake_herbivores(
 )
 }
 \arguments{
-\item{species_name}{(vector of) scientific name of the herbivorous waterbird
-species (without author name)}
+\item{species_name}{(vector of) scientific name(s) of the herbivorous
+waterbird species (without author name)}
 
 \item{n_individuals}{(vector of) number of individuals of the species that
-are present on the waterbody}
+are present on the water body}
 
 \item{n_days}{(vector of) number of days that the individuals of the species
-are present on the waterbody}
+are present on the water body}
 
 \item{var_season}{(vector of) season(s) in which the given individuals of the
-species are present on the waterbody.
+species are present on the water body.
 Possible values are \code{spring}, \code{summer} and \code{winter}.}
 
 \item{type_food}{(vector of) type of food that is eaten by the species.
@@ -57,7 +57,7 @@ Defaults to the table provided in this package that can be accessed by
 \item{var_food}{table (data.frame) on food types with at least columns
 \code{food} (with values grass and beet),
 \code{enery} (energy content of the terrestrial diet in kJ/g),
-\code{AM} (apparent metabolizable energy coëfficiënt) and
+\code{AM} (apparent metabolizable energy coefficient) and
 \code{N25}, \code{N50}, \code{N75}, \code{P25}, \code{P50} and \code{P75} (low (25th percentile),
 average (mean) and high (75th percentile) level of nitrogen (N) or
 phosphorus (P) in the food type.
