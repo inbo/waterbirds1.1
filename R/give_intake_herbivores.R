@@ -66,9 +66,12 @@ give_intake_herbivores <- function(
   ),
   terr_food_herbivores = read.csv2(
     system.file(
-      "input_variables/terr_food_herbivores.csv", package = "waterbirds1.1")),
+      "input_variables/terr_food_herbivores.csv", package = "waterbirds1.1"
+    )
+  ),
   var_food = read.csv2(
-    system.file("input_variables/var_food.csv", package = "waterbirds1.1")),
+    system.file("input_variables/var_food.csv", package = "waterbirds1.1")
+  ),
   foraging_time = 12
 ) {
 
@@ -88,7 +91,8 @@ give_intake_herbivores <- function(
   assert_that(has_name(terr_food_herbivores, "season"))
   assert_that(inherits(terr_food_herbivores$season, "character"))
   assert_that(
-    all(terr_food_herbivores$season %in% c("spring", "summer", "winter")))
+    all(terr_food_herbivores$season %in% c("spring", "summer", "winter"))
+  )
   assert_that(has_name(terr_food_herbivores, "f_t"))
   assert_that(inherits(terr_food_herbivores$f_t, "numeric"))
   assert_that(all(terr_food_herbivores$f_t >= 0))
@@ -140,12 +144,14 @@ give_intake_herbivores <- function(
   assert_that(inherits(var_season, "character"))
   assert_that(all(var_season %in% c("spring", "summer", "winter")))
   assert_that(
-    length(var_season) == length(species_name) || length(var_season) == 1)
+    length(var_season) == length(species_name) || length(var_season) == 1
+  )
 
   assert_that(inherits(type_food, "character"))
   assert_that(all(type_food %in% c("grass", "beet")))
   assert_that(
-    length(type_food) == length(species_name) || length(type_food) == 1)
+    length(type_food) == length(species_name) || length(type_food) == 1
+  )
   assert_that(all(type_food %in% var_food$food))
 
   assert_that(inherits(foraging_time, "numeric") |
@@ -173,7 +179,7 @@ give_intake_herbivores <- function(
 
   # daily terrestrial food intake (g/day, DFI_t in article)
   dft_t <- f_t * der / (energy * am)
-  # g/day = kJ/day / (kJ/g)
+  # units: g/day = kJ/day / (kJ/g)   #nolint: commented_code_linter
 
   # ratio of retention time = average time for food to pass a bird's digestive
   # track (h, RT in article)
@@ -181,14 +187,15 @@ give_intake_herbivores <- function(
 
   # T_f = total foraging time (h) = variable foraging_time
 
-  # X_food = elemental concentration N and P in food (mg/g)
+  # X_food = elemental concentration N and P in food (g/g)
 
   # X_ai = allochthonous nutrient input into a freshwater body (g/day)
-  # X_ai = RT / T_f * DFI_t * X_food
-  # g/day = h / h * g/day * mg/g  * 10 ^ -3
+  # formula: X_ai = RT / T_f * DFI_t * X_food  #nolint: commented_code_linter
+  # units: g/day = h / h * g/day * g/g         #nolint: commented_code_linter
 
-  x_ai <- rt / foraging_time * dft_t * 10 ^ -3 # * X_food, which we do later
-  x_tot <- x_ai * n_individuals * n_days # * X_food
+  x_ai <- rt / foraging_time * dft_t # * X_food, which we do later
+  # total nutrient imput in kg
+  x_tot <- x_ai * n_individuals * n_days * 10 ^ -3 # * X_food
 
   n_tot_25 <- x_tot * var_food[var_food$food == type_food, "N25"]
   n_tot_50 <- x_tot * var_food[var_food$food == type_food, "N50"]
