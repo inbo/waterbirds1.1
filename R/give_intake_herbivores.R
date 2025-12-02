@@ -194,7 +194,7 @@ give_intake_herbivores <- function(
   # units: g/day = h / h * g/day * g/g         #nolint: commented_code_linter
 
   x_ai <- rt / foraging_time * dft_t # * X_food, which we do later
-  # total nutrient imput in kg
+  # total nutrient input in kg
   x_tot <- x_ai * n_individuals * n_days * 10 ^ -3 # * X_food
 
   n_tot_25 <- x_tot * var_food[var_food$food == type_food, "N25"]

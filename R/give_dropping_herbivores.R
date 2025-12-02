@@ -109,7 +109,7 @@ give_dropping_herbivores <- function(
   n_ai <- f_t * rt * drm * drr * n_drop * 10 ^ -3
   p_ai <- f_t * rt * drm * drr * p_drop * 10 ^ -3
 
-  # total nutrient imput in kg
+  # total nutrient input in kg
   n_tot <- n_ai * n_individuals * n_days * 10 ^ -3
   p_tot <- p_ai * n_individuals * n_days * 10 ^ -3
 
