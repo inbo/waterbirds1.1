@@ -16,7 +16,7 @@ give_intake_carnivores(
 )
 }
 \arguments{
-\item{species_name}{(vector of) scientific name(s) of the herbivorous
+\item{species_name}{(vector of) scientific name(s) of the carnivorous
 waterbird species (without author name)}
 
 \item{n_individuals}{(vector of) number of individuals of the species that

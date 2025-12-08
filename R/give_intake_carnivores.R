@@ -6,11 +6,13 @@
 #' steady-state with respect to the focal nutrient (intake model,
 #' \emph{Hahn et al., 2007}).
 #'
+#' @param species_name (vector of) scientific name(s) of the carnivorous
+#'   waterbird species (without author name)
 #' @param prop_nutr_rel portion of total nutrient release (A in article) as a
 #'   named vector giving 2 values:
 #'   "internal" giving the value for internal loaders
 #'     (= species that only forage in aquatic habitats) and
-#'   "external" the average of estimations from species of external loaders
+#'   "external" the average of estimations from species of external loaders.
 #'   Defaults to 1 for internal loaders and 0.6 for external loaders (values
 #'   from article \emph{Hahn et al., 2007}).
 #' @inheritParams give_intake_herbivores
