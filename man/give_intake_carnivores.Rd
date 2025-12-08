@@ -49,12 +49,19 @@ Defaults to the table provided in this package that can be accessed by
 named vector giving 2 values:
 "internal" giving the value for internal loaders
 (= species that only forage in aquatic habitats) and
-"external" the average of estimations from species of external loaders
+"external" the average of estimations from species of external loaders.
 Defaults to 1 for internal loaders and 0.6 for external loaders (values
 from article \emph{Hahn et al., 2007}).}
 }
 \value{
-data.frame with ...
+data.frame with columns \code{species_name} and \code{n_individuals} as
+reference columns from the input,
+and columns \code{n_tot} and \code{p_tot} with the nitrogen and phosphorus input
+in kg by the birds in the given number of days.
+Each result is given with suffixes \verb{_25}, \verb{_50} and \verb{_75},
+corresponding to low (25th percentile), average (mean) and high
+(75th percentile) level of nutrients in the food type
+(see argument \code{var_food}).
 }
 \description{
 This function quantifies the allochthonous nitrogen and phosphorus input

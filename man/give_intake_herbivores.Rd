@@ -68,7 +68,14 @@ Defaults to the table provided in this package that can be accessed by
 \item{foraging_time}{total foraging time in hours (T_f), defaults to 12 h}
 }
 \value{
-data.frame with ...
+data.frame with columns \code{species_name}, \code{n_individuals} and
+\code{var_season} as reference columns from the input,
+and columns \code{n_tot} and \code{p_tot} with the nitrogen and phosphorus input
+in kg by the birds in the given number of days.
+Each result is given with suffixes \verb{_25}, \verb{_50} and \verb{_75},
+corresponding to low (25th percentile), average (mean) and high
+(75th percentile) level of nutrients in the food type
+(see argument \code{var_food}).
 }
 \description{
 This function quantifies the allochthonous nitrogen and phosphorus input

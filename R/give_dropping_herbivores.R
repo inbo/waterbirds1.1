@@ -10,7 +10,10 @@
 #'   (defaults to 6.18 taken from article of \emph{Hahn et al., 2008})
 #' @inheritParams give_intake_herbivores
 #'
-#' @return data.frame with ...
+#' @return data.frame with columns `species_name`, `n_individuals` and
+#'   `var_season` as reference columns from the input,
+#'   and columns `n_tot` and `p_tot` with the nitrogen and phosphorus input
+#'   in kg by the birds in the given number of days.
 #'
 #' @references
 #' \itemize{

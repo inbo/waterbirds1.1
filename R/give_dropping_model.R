@@ -16,7 +16,10 @@
 #' @inheritParams give_dropping_herbivores
 #' @inheritParams give_excretion_carnivores
 #'
-#' @return
+#' @return data.frame with columns `location`, `species` and `year` from the
+#'   input data.frame `bird_occurrence`,
+#'   and columns `n_tot` and `p_tot` with the total nitrogen and phosphorus
+#'   input in kg for the given location, species and year.
 #'
 #' @references
 #' \itemize{

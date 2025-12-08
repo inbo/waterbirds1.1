@@ -42,7 +42,14 @@
 #'   `read.csv2(system.file("input_variables/var_food.csv", package = "waterbirds1.1"))`.
 #' @param foraging_time total foraging time in hours (T_f), defaults to 12 h
 #'
-#' @return data.frame with ...
+#' @return data.frame with columns `species_name`, `n_individuals` and
+#'   `var_season` as reference columns from the input,
+#'   and columns `n_tot` and `p_tot` with the nitrogen and phosphorus input
+#'   in kg by the birds in the given number of days.
+#'   Each result is given with suffixes `_25`, `_50` and `_75`,
+#'   corresponding to low (25th percentile), average (mean) and high
+#'   (75th percentile) level of nutrients in the food type
+#'   (see argument `var_food`).
 #'
 #' @references
 #' \itemize{

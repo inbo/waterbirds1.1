@@ -29,7 +29,14 @@
 #' @inheritParams give_intake_herbivores
 #' @inheritParams give_intake_carnivores
 #'
-#' @return
+#' @return data.frame with columns `location`, `species` and `year` from the
+#'   input data.frame `bird_occurrence`,
+#'   and columns `n_tot` and `p_tot` with the total nitrogen and phosphorus
+#'   input in kg for the given location, species and year.
+#'   Each result is given with suffixes `_25`, `_50` and `_75`,
+#'   corresponding to low (25th percentile), average (mean) and high
+#'   (75th percentile) level of nutrients in the food type
+#'   (see argument `var_food`).
 #'
 #' @references
 #' \itemize{
