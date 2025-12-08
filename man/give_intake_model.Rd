@@ -37,7 +37,7 @@ are present (if nutrient input should be given per location)
 \item{season_def}{definition of season, given as a data.frame with columns
 \code{season} and \code{month} (as number) showing which months are included in
 winter, spring and summer.
-Defaults to the season definition in article xxx.}
+Defaults to the season definition in article \emph{Hahn et al. (2008)}.}
 
 \item{type_food}{(vector of) type of food that is eaten by the species.
 Defaults to \code{grass}, the other option is \code{beet}.}
@@ -78,7 +78,7 @@ named vector giving 2 values:
 (= species that only forage in aquatic habitats) and
 "external" the average of estimations from species of external loaders
 Defaults to 1 for internal loaders and 0.6 for external loaders (values
-from article).}
+from article \emph{Hahn et al., 2007}).}
 }
 \description{
 This function quantifies the allochthonous nitrogen and phosphorus input
@@ -102,4 +102,16 @@ dataset <- data.frame(
   location = "ZwartWater"
 )
 give_intake_model(bird_occurrence = dataset)
+}
+\references{
+\itemize{
+\item Hahn S., Bauwer S., Klaassen M. (2007). Estimating the contribution of
+carnivorous waterbirds to nutrient loading in freshwater habitats.
+Freshwater Biology 52: 2421-2433.
+\doi{10.1111/j.1365-2427.2007.01838.x}
+\item Hahn S., Bauwer S., Klaassen M. (2008). Quantification of allochthonous
+nutrient input into freshwater bodies by herbivorous waterbirds.
+Freshwater Biology 53: 181-193.
+\doi{10.1111/j.1365-2427.2007.01881.x}
+}
 }

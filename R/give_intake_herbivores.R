@@ -2,7 +2,7 @@
 #'
 #' This function quantifies the allochthonous nitrogen and phosphorus input
 #' by herbivorous waterbirds based on mass-specific energy requirement and
-#' daily food intake (intake model).
+#' daily food intake (intake model, \emph{Hahn et al., 2008}).
 #'
 #' @param species_name (vector of) scientific name(s) of the herbivorous
 #'   waterbird species (without author name)
@@ -43,6 +43,14 @@
 #' @param foraging_time total foraging time in hours (T_f), defaults to 12 h
 #'
 #' @return data.frame with ...
+#'
+#' @references
+#' \itemize{
+#' \item Hahn S., Bauwer S., Klaassen M. (2008). Quantification of allochthonous
+#' nutrient input into freshwater bodies by herbivorous waterbirds.
+#' Freshwater Biology 53: 181-193.
+#' \doi{10.1111/j.1365-2427.2007.01881.x}
+#' }
 #'
 #' @importFrom assertthat assert_that has_name
 #' @importFrom utils read.csv2

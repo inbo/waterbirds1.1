@@ -53,10 +53,10 @@ Defaults to the table provided in this package that can be accessed by
 \code{read.csv2(system.file("input_variables/var_food.csv", package = "waterbirds1.1"))}.}
 
 \item{n_drop}{elemental concentration of nitrogen (N) in droppings in mg/g
-(defaults to 45.02 taken from article of Hahn et al, 2008)}
+(defaults to 45.02 taken from article of \emph{Hahn et al., 2008})}
 
 \item{p_drop}{elemental concentration of phosphorus (P) in droppings in mg/g
-(defaults to 6.18 taken from article of Hahn et al, 2008)}
+(defaults to 6.18 taken from article of \emph{Hahn et al., 2008})}
 
 \item{prop_nutr_rel}{portion of total nutrient release (A in article) as a
 named vector giving 2 values:
@@ -64,10 +64,11 @@ named vector giving 2 values:
 (= species that only forage in aquatic habitats) and
 "external" the average of estimations from species of external loaders
 Defaults to 1 for internal loaders and 0.6 for external loaders (values
-from article).}
+from article \emph{Hahn et al., 2007}).}
 
 \item{alpha}{ratio between food intake and excretion, defaults to 0.395
-(referenced in the article, value based on 3 species)}
+(referenced in the article \emph{Hahn et al., 2007}, value based on 3
+species)}
 
 \item{n_excr}{elemental concentration of nitrogen (N) in droppings in g/g
 (defaults to 0.103 derived from tool Waterbirds 1.1)}
@@ -97,4 +98,16 @@ dataset <- data.frame(
   location = "ZwartWater"
 )
 give_dropping_model(bird_occurrence = dataset)
+}
+\references{
+\itemize{
+\item Hahn S., Bauwer S., Klaassen M. (2007). Estimating the contribution of
+carnivorous waterbirds to nutrient loading in freshwater habitats.
+Freshwater Biology 52: 2421-2433.
+\doi{10.1111/j.1365-2427.2007.01838.x}
+\item Hahn S., Bauwer S., Klaassen M. (2008). Quantification of allochthonous
+nutrient input into freshwater bodies by herbivorous waterbirds.
+Freshwater Biology 53: 181-193.
+\doi{10.1111/j.1365-2427.2007.01881.x}
+}
 }

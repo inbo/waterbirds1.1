@@ -54,10 +54,11 @@ named vector giving 2 values:
 (= species that only forage in aquatic habitats) and
 "external" the average of estimations from species of external loaders
 Defaults to 1 for internal loaders and 0.6 for external loaders (values
-from article).}
+from article \emph{Hahn et al., 2007}).}
 
 \item{alpha}{ratio between food intake and excretion, defaults to 0.395
-(referenced in the article, value based on 3 species)}
+(referenced in the article \emph{Hahn et al., 2007}, value based on 3
+species)}
 
 \item{n_excr}{elemental concentration of nitrogen (N) in droppings in g/g
 (defaults to 0.103 derived from tool Waterbirds 1.1)}
@@ -71,7 +72,7 @@ data.frame with ...
 \description{
 This function quantifies the allochthonous nitrogen and phosphorus input
 by carnivorous waterbirds based on nutrient concentrations in the daily
-excrement productions directly (excretion model).
+excrement productions directly (excretion model, \emph{Hahn et al., 2008}).
 }
 \examples{
 library(waterbirds1.1)
@@ -80,4 +81,12 @@ give_excretion_carnivores(
   n_individuals = 1,
   n_days = 1
 )
+}
+\references{
+\itemize{
+\item Hahn S., Bauwer S., Klaassen M. (2007). Estimating the contribution of
+carnivorous waterbirds to nutrient loading in freshwater habitats.
+Freshwater Biology 52: 2421-2433.
+\doi{10.1111/j.1365-2427.2007.01838.x}
+}
 }

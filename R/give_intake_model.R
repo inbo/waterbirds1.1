@@ -25,11 +25,23 @@
 #' @param season_def definition of season, given as a data.frame with columns
 #'   `season` and `month` (as number) showing which months are included in
 #'   winter, spring and summer.
-#'   Defaults to the season definition in article xxx.
+#'   Defaults to the season definition in article \emph{Hahn et al. (2008)}.
 #' @inheritParams give_intake_herbivores
 #' @inheritParams give_intake_carnivores
 #'
 #' @return
+#'
+#' @references
+#' \itemize{
+#' \item Hahn S., Bauwer S., Klaassen M. (2007). Estimating the contribution of
+#' carnivorous waterbirds to nutrient loading in freshwater habitats.
+#' Freshwater Biology 52: 2421-2433.
+#' \doi{10.1111/j.1365-2427.2007.01838.x}
+#' \item Hahn S., Bauwer S., Klaassen M. (2008). Quantification of allochthonous
+#' nutrient input into freshwater bodies by herbivorous waterbirds.
+#' Freshwater Biology 53: 181-193.
+#' \doi{10.1111/j.1365-2427.2007.01881.x}
+#' }
 #'
 #' @importFrom assertthat assert_that has_name
 #' @importFrom dplyr across bind_rows count filter group_by left_join mutate

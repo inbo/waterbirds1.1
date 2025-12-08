@@ -2,10 +2,11 @@
 #'
 #' This function quantifies the allochthonous nitrogen and phosphorus input
 #' by carnivorous waterbirds based on nutrient concentrations in the daily
-#' excrement productions directly (excretion model).
+#' excrement productions directly (excretion model, \emph{Hahn et al., 2008}).
 #'
 #' @param alpha ratio between food intake and excretion, defaults to 0.395
-#'   (referenced in the article, value based on 3 species)
+#'   (referenced in the article \emph{Hahn et al., 2007}, value based on 3
+#'   species)
 #' @param n_excr elemental concentration of nitrogen (N) in droppings in g/g
 #'   (defaults to 0.103 derived from tool Waterbirds 1.1)
 #' @param p_excr elemental concentration of phosphorus (P) in droppings in g/g
@@ -14,6 +15,14 @@
 #' @inheritParams give_intake_herbivores
 #'
 #' @return data.frame with ...
+#'
+#' @references
+#' \itemize{
+#' \item Hahn S., Bauwer S., Klaassen M. (2007). Estimating the contribution of
+#' carnivorous waterbirds to nutrient loading in freshwater habitats.
+#' Freshwater Biology 52: 2421-2433.
+#' \doi{10.1111/j.1365-2427.2007.01838.x}
+#' }
 #'
 #' @importFrom assertthat assert_that has_name
 #' @importFrom utils read.csv2

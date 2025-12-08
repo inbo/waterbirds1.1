@@ -12,11 +12,23 @@
 #' observations which might have missing data or multiple data per month.
 #'
 #'
-#' @inheritParams give_dropping_model
+#' @inheritParams give_intake_model
 #' @inheritParams give_dropping_herbivores
 #' @inheritParams give_excretion_carnivores
 #'
 #' @return
+#'
+#' @references
+#' \itemize{
+#' \item Hahn S., Bauwer S., Klaassen M. (2007). Estimating the contribution of
+#' carnivorous waterbirds to nutrient loading in freshwater habitats.
+#' Freshwater Biology 52: 2421-2433.
+#' \doi{10.1111/j.1365-2427.2007.01838.x}
+#' \item Hahn S., Bauwer S., Klaassen M. (2008). Quantification of allochthonous
+#' nutrient input into freshwater bodies by herbivorous waterbirds.
+#' Freshwater Biology 53: 181-193.
+#' \doi{10.1111/j.1365-2427.2007.01881.x}
+#' }
 #'
 #' @importFrom assertthat assert_that has_name
 #' @importFrom dplyr across bind_rows count filter group_by left_join mutate

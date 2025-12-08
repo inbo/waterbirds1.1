@@ -30,8 +30,19 @@ size](https://img.shields.io/github/repo-size/inbo/waterbirds1.1.svg)
 The goal of waterbirds1.1 is to calculate the nutrient input by
 waterbirds, based on the tool Waterbirds v1.1 (2007) from S. Bauwer & S.
 Hahn, Netherlands Institute of Ecology (NIOO-KNAW) and the related
-publications Hahn et al. (2007, Freshwater Biology) and Hahn et
-al. (2008, Freshwater Biology).
+publications of *Hahn et al. (2007 and 2008)*.
+
+References:
+
+Hahn S., Bauwer S. & Klaassen M. (2007). Estimating the contribution of
+carnivorous waterbirds to nutrient loading in freshwater habitats.
+Freshwater Biology 52: 2421-2433.
+[doi:10.1111/j.1365-2427.2007.01838.x](https://doi.org/10.1111/j.1365-2427.2007.01838.x)
+
+Hahn S., Bauwer S. & Klaassen M. (2008). Quantification of allochthonous
+nutrient input into freshwater bodies by herbivorous waterbirds.
+Freshwater Biology 53: 181-193.
+[doi:10.1111/j.1365-2427.2007.01881.x](https://doi.org/10.1111/j.1365-2427.2007.01881.x)
 
 ## Installation
 

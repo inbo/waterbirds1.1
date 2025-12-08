@@ -73,7 +73,7 @@ data.frame with ...
 \description{
 This function quantifies the allochthonous nitrogen and phosphorus input
 by herbivorous waterbirds based on mass-specific energy requirement and
-daily food intake (intake model).
+daily food intake (intake model, \emph{Hahn et al., 2008}).
 }
 \examples{
 library(waterbirds1.1)
@@ -83,4 +83,12 @@ give_intake_herbivores(
   n_days = 1,
   var_season = "spring"
 )
+}
+\references{
+\itemize{
+\item Hahn S., Bauwer S., Klaassen M. (2008). Quantification of allochthonous
+nutrient input into freshwater bodies by herbivorous waterbirds.
+Freshwater Biology 53: 181-193.
+\doi{10.1111/j.1365-2427.2007.01881.x}
+}
 }

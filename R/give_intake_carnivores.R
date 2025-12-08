@@ -3,7 +3,8 @@
 #' This function quantifies the allochthonous nitrogen and phosphorus input
 #' by carnivorous waterbirds based on nutrient concentrations of ingested food,
 #' the birds’ daily energy requirements and the assumption that birds are in
-#' steady-state with respect to the focal nutrient (intake model).
+#' steady-state with respect to the focal nutrient (intake model,
+#' \emph{Hahn et al., 2007}).
 #'
 #' @param prop_nutr_rel portion of total nutrient release (A in article) as a
 #'   named vector giving 2 values:
@@ -11,10 +12,18 @@
 #'     (= species that only forage in aquatic habitats) and
 #'   "external" the average of estimations from species of external loaders
 #'   Defaults to 1 for internal loaders and 0.6 for external loaders (values
-#'   from article).
+#'   from article \emph{Hahn et al., 2007}).
 #' @inheritParams give_intake_herbivores
 #'
 #' @return data.frame with ...
+#'
+#' @references
+#' \itemize{
+#' \item Hahn S., Bauwer S., Klaassen M. (2007). Estimating the contribution of
+#' carnivorous waterbirds to nutrient loading in freshwater habitats.
+#' Freshwater Biology 52: 2421-2433.
+#' \doi{10.1111/j.1365-2427.2007.01838.x}
+#' }
 #'
 #' @importFrom assertthat assert_that has_name
 #' @importFrom utils read.csv2

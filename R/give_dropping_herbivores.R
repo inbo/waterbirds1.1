@@ -2,15 +2,23 @@
 #'
 #' This function quantifies the allochthonous nitrogen and phosphorus input
 #' by herbivorous waterbirds based on daily faecal output and digestive
-#' performance (dropping model).
+#' performance (dropping model, \emph{Hahn et al., 2008}).
 #'
 #' @param n_drop elemental concentration of nitrogen (N) in droppings in mg/g
-#'   (defaults to 45.02 taken from article of Hahn et al, 2008)
+#'   (defaults to 45.02 taken from article of \emph{Hahn et al., 2008})
 #' @param p_drop elemental concentration of phosphorus (P) in droppings in mg/g
-#'   (defaults to 6.18 taken from article of Hahn et al, 2008)
+#'   (defaults to 6.18 taken from article of \emph{Hahn et al., 2008})
 #' @inheritParams give_intake_herbivores
 #'
 #' @return data.frame with ...
+#'
+#' @references
+#' \itemize{
+#' \item Hahn S., Bauwer S., Klaassen M. (2008). Quantification of allochthonous
+#' nutrient input into freshwater bodies by herbivorous waterbirds.
+#' Freshwater Biology 53: 181-193.
+#' \doi{10.1111/j.1365-2427.2007.01881.x}
+#' }
 #'
 #' @importFrom assertthat assert_that has_name
 #' @importFrom utils read.csv2
