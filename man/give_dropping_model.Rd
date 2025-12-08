@@ -24,6 +24,24 @@ give_dropping_model(
 )
 }
 \arguments{
+\item{bird_occurrence}{data.frame giving the abundance of waterbirds per
+location (water body) in each month with at least columns
+\itemize{
+\item \code{species} (or \code{common_name}): the scientific (or common) name of the
+species,
+\item \code{month}: the month as a number (e.g. 3 for March),
+\item \code{year}: the year (if nutrient input should be given per year),
+\item \code{n_individuals}: the average daily number of individuals present in this
+month,
+\item \code{location}: the place or water body where the individuals of the species
+are present (if nutrient input should be given per location)
+}}
+
+\item{season_def}{definition of season, given as a data.frame with columns
+\code{season} and \code{month} (as number) showing which months are included in
+winter, spring and summer.
+Defaults to the season definition in article \emph{Hahn et al. (2008)}.}
+
 \item{var_species}{table (data.frame) with waterbird data with at least
 columns \code{species} (scientific name), \code{body_mass} (weight in g) and
 \code{diet} with possible values "herbivore",
