@@ -19,6 +19,8 @@ Imports:
     assertthat,
     dplyr,
     lubridate,
+    rlang,
+    tidyselect,
     utils
 Suggests:
     knitr
