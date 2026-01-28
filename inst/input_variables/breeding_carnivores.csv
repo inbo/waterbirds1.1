@@ -1,0 +1,16 @@
+species;common_name;body_mass;egg_mass;clutch_size;breeding_success;nesting_period
+Ardea cinerea;Grey Heron;1433;60;4,2;2,1;75
+Phalacrocorax carbo;Great Cormorant;2254;58;3,5;1,3;72
+Larus minutus;Little Gull;99;NA;NA;NA;NA
+Larus ridibundus;Black-headed Gull;275;33;2,5;1,0;51
+Larus melanocephalus;Mediterranean Gull;273;42;2,8;0,6;54
+Larus canus;Mew Gull;387;51;2,6;0,6;55
+Larus fuscus;Lesser Black-backed Gull;792;78;2,7;1,0;63
+Larus cachinnans;Caspian Gull;916;NA;NA;NA;NA
+Larus argentatus;Herring Gull;958;85;2,7;0,9;74
+Larus michahellis;Yellow-legged Gull;1154;NA;NA;NA;NA
+Larus marinus;Great Black-backed Gull;1600;NA;NA;NA;NA
+Rissa tridactyla;Black-legged Kittiwake;418;NA;NA;NA;NA
+Sterna paradisaea;Arctic Tern;110;NA;NA;NA;NA
+Sterna hirundo;Common Tern;133;21;2,8;1,0;48
+Sterna sandvicensis;Sandwich Tern;237;NA;NA;NA;NA

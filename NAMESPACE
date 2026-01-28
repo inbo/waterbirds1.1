@@ -2,7 +2,9 @@
 
 export(give_dropping_herbivores)
 export(give_dropping_model)
+export(give_excretion_breeding_carni)
 export(give_excretion_carnivores)
+export(give_intake_breeding_carni)
 export(give_intake_carnivores)
 export(give_intake_herbivores)
 export(give_intake_model)
