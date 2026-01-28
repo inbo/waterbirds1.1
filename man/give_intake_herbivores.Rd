@@ -99,3 +99,8 @@ Freshwater Biology 53: 181-193.
 \doi{10.1111/j.1365-2427.2007.01881.x}
 }
 }
+\seealso{
+Other herbivores: 
+\code{\link{give_dropping_herbivores}()}
+}
+\concept{herbivores}

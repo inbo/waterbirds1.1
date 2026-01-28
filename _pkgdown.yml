@@ -19,6 +19,17 @@ navbar:
       - text: Code of conduct
         href: CODE_OF_CONDUCT.html
 
+reference:
+- title: Generic functions
+  contents:
+  - has_concept("generic")
+- title: Calculations for carnivores
+  contents:
+  - has_concept("carnivores")
+- title: Calculations for herbivores
+  contents:
+  - has_concept("herbivores")
+
 authors:
   Research Institute for Nature and Forest (INBO):
     href: "https://www.vlaanderen.be/inbo/en-gb"

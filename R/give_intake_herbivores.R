@@ -63,6 +63,7 @@
 #' @importFrom utils read.csv2
 #'
 #' @export
+#' @family herbivores
 #'
 #' @examples
 #' library(waterbirds1.1)

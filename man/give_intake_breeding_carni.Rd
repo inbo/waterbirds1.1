@@ -98,3 +98,10 @@ Freshwater Biology 52: 2421-2433.
 \doi{10.1111/j.1365-2427.2007.01838.x}
 }
 }
+\seealso{
+Other carnivores: 
+\code{\link{give_excretion_breeding_carni}()},
+\code{\link{give_excretion_carnivores}()},
+\code{\link{give_intake_carnivores}()}
+}
+\concept{carnivores}

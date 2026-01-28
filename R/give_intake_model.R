@@ -58,6 +58,7 @@
 #' @importFrom tidyselect contains
 #'
 #' @export
+#' @family generic
 #'
 #' @examples
 #' library(waterbirds1.1)
