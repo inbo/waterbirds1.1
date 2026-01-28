@@ -75,7 +75,7 @@ in kg by the birds in the given number of days.
 \description{
 This function quantifies the allochthonous nitrogen and phosphorus input
 by carnivorous waterbirds based on nutrient concentrations in the daily
-excrement productions directly (excretion model, \emph{Hahn et al., 2008}).
+excrement productions directly (excretion model, \emph{Hahn et al., 2007}).
 }
 \examples{
 library(waterbirds1.1)

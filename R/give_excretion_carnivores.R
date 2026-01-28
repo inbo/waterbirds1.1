@@ -2,7 +2,7 @@
 #'
 #' This function quantifies the allochthonous nitrogen and phosphorus input
 #' by carnivorous waterbirds based on nutrient concentrations in the daily
-#' excrement productions directly (excretion model, \emph{Hahn et al., 2008}).
+#' excrement productions directly (excretion model, \emph{Hahn et al., 2007}).
 #'
 #' @param alpha ratio between food intake and excretion, defaults to 0.395
 #'   (referenced in the article \emph{Hahn et al., 2007}, value based on 3
