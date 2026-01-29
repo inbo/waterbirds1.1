@@ -5,7 +5,7 @@
 \title{Calculate intake model for given non-breeding bird species}
 \usage{
 give_intake_model(
-  bird_occurrence,
+  bird_abundance,
   season_def = data.frame(season = c(rep("winter", 2), rep("spring", 2), rep("summer",
     5), rep("winter", 3)), month = 1:12),
   type_food = "grass",
@@ -21,7 +21,7 @@ give_intake_model(
 )
 }
 \arguments{
-\item{bird_occurrence}{data.frame giving the abundance of waterbirds per
+\item{bird_abundance}{data.frame giving the abundance of waterbirds per
 location (water body) in each month with at least columns
 \itemize{
 \item \code{species} (or \code{common_name}): the scientific (or common) name of the
@@ -82,7 +82,7 @@ from article \emph{Hahn et al., 2007}).}
 }
 \value{
 data.frame with columns \code{location}, \code{species} and \code{year} from the
-input data.frame \code{bird_occurrence},
+input data.frame \code{bird_abundance},
 and columns \code{n_tot} and \code{p_tot} with the total nitrogen and phosphorus
 input in kg for the given location, species and year.
 Each result is given with suffixes \verb{_25}, \verb{_50} and \verb{_75},
@@ -111,7 +111,7 @@ dataset <- data.frame(
   n_individuals = 1,
   location = "ZwartWater"
 )
-give_intake_model(bird_occurrence = dataset)
+give_intake_model(bird_abundance = dataset)
 }
 \references{
 \itemize{

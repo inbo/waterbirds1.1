@@ -17,7 +17,7 @@
 #' @inheritParams give_excretion_carnivores
 #'
 #' @return data.frame with columns `location`, `species` and `year` from the
-#'   input data.frame `bird_occurrence`,
+#'   input data.frame `bird_abundance`,
 #'   and columns `n_tot` and `p_tot` with the total nitrogen and phosphorus
 #'   input in kg for the given location, species and year.
 #'
@@ -52,10 +52,10 @@
 #'   n_individuals = 1,
 #'   location = "ZwartWater"
 #' )
-#' give_dropping_model(bird_occurrence = dataset)
+#' give_dropping_model(bird_abundance = dataset)
 
 give_dropping_model <- function(
-  bird_occurrence,
+  bird_abundance,
   season_def = data.frame(
     season =
       c(rep("winter", 2), rep("spring", 2), rep("summer", 5), rep("winter", 3)),
@@ -85,43 +85,43 @@ give_dropping_model <- function(
   assert_that(has_name(var_species, "common_name"))
   assert_that(inherits(var_species$common_name, "character"))
 
-  assert_that(inherits(bird_occurrence, "data.frame"))
+  assert_that(inherits(bird_abundance, "data.frame"))
   if (
-    !has_name(bird_occurrence, "species") &&
-      has_name(bird_occurrence, "common_name")
+    !has_name(bird_abundance, "species") &&
+      has_name(bird_abundance, "common_name")
   ) {
-    bird_occurrence$species <-
+    bird_abundance$species <-
       var_species[
-        var_species$common_name == bird_occurrence$common_name, "species"
+        var_species$common_name == bird_abundance$common_name, "species"
       ]
   }
-  assert_that(has_name(bird_occurrence, "species"))
-  assert_that(inherits(bird_occurrence$species, "character"))
-  assert_that(all(bird_occurrence$species %in% var_species$species))
-  assert_that(has_name(bird_occurrence, "month"))
-  assert_that(is.numeric(bird_occurrence$month))
+  assert_that(has_name(bird_abundance, "species"))
+  assert_that(inherits(bird_abundance$species, "character"))
+  assert_that(all(bird_abundance$species %in% var_species$species))
+  assert_that(has_name(bird_abundance, "month"))
+  assert_that(is.numeric(bird_abundance$month))
   assert_that(
-    all(bird_occurrence$month == floor(bird_occurrence$month)),
+    all(bird_abundance$month == floor(bird_abundance$month)),
     msg = "bird_occurence$month must be an integer"
   )
-  assert_that(all(bird_occurrence$month > 0))
-  assert_that(all(bird_occurrence$month <= 12))
-  assert_that(has_name(bird_occurrence, "year"))
-  assert_that(is.numeric(bird_occurrence$year))
+  assert_that(all(bird_abundance$month > 0))
+  assert_that(all(bird_abundance$month <= 12))
+  assert_that(has_name(bird_abundance, "year"))
+  assert_that(is.numeric(bird_abundance$year))
   assert_that(
-    all(bird_occurrence$year == floor(bird_occurrence$year)),
+    all(bird_abundance$year == floor(bird_abundance$year)),
     msg = "bird_occurence$year must be an integer"
   )
-  assert_that(has_name(bird_occurrence, "n_individuals"))
-  assert_that(is.numeric(bird_occurrence$n_individuals))
+  assert_that(has_name(bird_abundance, "n_individuals"))
+  assert_that(is.numeric(bird_abundance$n_individuals))
 
-  if (!has_name(bird_occurrence, "location")) {
-    bird_occurrence$location <- "no location added"
+  if (!has_name(bird_abundance, "location")) {
+    bird_abundance$location <- "no location added"
   }
-  assert_that(has_name(bird_occurrence, "location"))
-  assert_that(is.character(bird_occurrence$location))
+  assert_that(has_name(bird_abundance, "location"))
+  assert_that(is.character(bird_abundance$location))
 
-  doubles <- bird_occurrence |>
+  doubles <- bird_abundance |>
     count(.data$species, .data$month, .data$year, .data$location) |>
     filter(.data$n > 1)
   if (nrow(doubles) > 0) {
@@ -140,17 +140,17 @@ give_dropping_model <- function(
   assert_that(all(season_def$month > 0))
   assert_that(all(season_def$month <= 12))
 
-  bird_occurrence$n_days <- days_in_month(
-    as.Date(paste(bird_occurrence$year, bird_occurrence$month, "01", sep = "-"))
+  bird_abundance$n_days <- days_in_month(
+    as.Date(paste(bird_abundance$year, bird_abundance$month, "01", sep = "-"))
   )
-  bird_occurrence <- bird_occurrence |>
+  bird_abundance <- bird_abundance |>
     left_join(
       var_species |>
         select("species", "diet"),
       by = "species"
     ) |>
     left_join(season_def, by = "month")
-  result <- bird_occurrence |>
+  result <- bird_abundance |>
     filter(.data$diet == "herbivore") |>
     mutate(
       give_dropping_herbivores(
@@ -165,7 +165,7 @@ give_dropping_model <- function(
       )
     ) |>
     bind_rows(
-      bird_occurrence |>
+      bird_abundance |>
         filter(.data$diet != "herbivore") |>
         mutate(
           give_excretion_carnivores(
