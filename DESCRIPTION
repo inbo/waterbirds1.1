@@ -23,7 +23,8 @@ Imports:
     tidyselect,
     utils
 Suggests:
-    knitr
+    knitr,
+    rmarkdown
 VignetteBuilder:
     knitr
 Config/checklist/communities: inbo

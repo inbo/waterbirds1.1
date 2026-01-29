@@ -1,0 +1,32 @@
+---
+title: "Abundance data from observations.be"
+output: rmarkdown::html_vignette
+bibliography: "references.bib"
+vignette: >
+  %\VignetteIndexEntry{Abundance data from observations.be}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+An often used data source for bird abundance data is [observations.be](https://observations.be/),
+but there are some caveats while using these data, for instance:
+
+- users choose where and when they do observations, sometimes with a specific purpose or driven by previous observations by others, so data are certainly not random or not evenly distributed, and no observations doesn't mean that a species is absent
+- users tend to add rare species more often than general species
+- users don't always count the number of individuals, in this case they keep the default value 1 for number of individuals
+
+How to deal with these data with respect to `waterbirds1.1`?
+
+- aggregate data over a period in which the observed numbers of this species are expected to be constant, e.g. a whole season, or the same period (or month) over multiple years (seasons defined in @hahn_estimating_2007 and @hahn_quantification_2008 are: winter from October to February, spring from March to April and summer from May to September)
+- in case there are observations with higher numbers of individuals, omit observations of only 1 individual because they are likely presence data and not count data
+- take the median of the 'reliable' data, as this operation is less vulnerable to aberrant outliers than for instance the mean
+- fill in this value for each month of the aggregated period, also for months where no data are available
+
+# References
