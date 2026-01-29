@@ -39,18 +39,44 @@ Hahn S., Bauwer S. & Klaassen M. (2008). Quantification of allochthonous nutrien
 
 ## Installation
 
-You can install the development version from [GitHub](https://github.com/) with:
+You can install the package from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
 remotes::install_github("inbo/waterbirds1.1")
 ```
 
-## Example
+## Calculate nutrient input with `waterbirds1.1`
 
-This is a basic example which shows you how to solve a common problem:
+_Hahn et al. (2007 and 2008)_ presented 2 different models for calculating the nutrient input of nitrogen and phosphorus by waterbirds:
 
-```{r example}
+- an intake model that calculates the nutrient loadings based on daily food intake by waterbirds
+
+- a dropping (_Hahn et al., 2008_) or excretion model (_Hahn et al., 2007_) based on the daily faecal output
+
+R-package `waterbirds1.1` has generic functions `give_intake_model()` and `give_dropping_model()` for calculating these models that require a dataset with abundance data (and some predefined variables that default to the values suggested in _Hahn et al. (2007 and 2008)_ but they can be customised).
+These functions use predefined info to distinguish between carnivores and herbivores, and food type defaults to grass in case of the intake model of herbivores.
+
+As there are some caveats in the use of abundance data from [observations.be](https://observations.be/), we elaborated on this in `vignette("observations", package = "waterbirds1.1")`.
+
+```{r examples_generid}
 library(waterbirds1.1)
-## basic example code
+
+dataset <- data.frame(
+  species = c("Anas crecca", "Ardea cinerea"),
+  month = 3,
+  year = 2026,
+  n_individuals = 1,
+  location = "ZwartWater"
+)
+
+give_intake_model(bird_abundance = dataset)
+
+give_dropping_model(bird_abundance = dataset)
 ```
+
+These generic functions use some more detailed functions in the background that are specific for carnivores or herbivores.
+For carnivores, there are additional functions for breeding birds, corresponding to the calculation described in _Hahn et al. (2007)_.
+These functions expect the variables in a different format, but they can be used as well.
+
+All documentation on the use of the functions, including an example, can be accessed via `Reference` in the navigation bar.
