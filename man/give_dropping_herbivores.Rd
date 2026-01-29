@@ -69,10 +69,10 @@ performance (dropping model, \emph{Hahn et al., 2008}).
 \examples{
 library(waterbirds1.1)
 give_dropping_herbivores(
-  species_name = "Anas crecca",
-  n_individuals = 1,
-  n_days = 1,
-  var_season = "spring"
+  species_name = c("Anas crecca", "Anas platyrhynchos"),
+  n_individuals = c(1, 1),
+  n_days = c(1, 1),
+  var_season = c("spring", "winter")
 )
 }
 \references{

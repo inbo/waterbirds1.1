@@ -73,9 +73,9 @@ steady-state with respect to the focal nutrient (intake model,
 \examples{
 library(waterbirds1.1)
 give_intake_carnivores(
-  species_name = "Ardea cinerea",
-  n_individuals = 1,
-  n_days = 1
+  species_name = c("Ardea cinerea", "Phalacrocorax carbo"),
+  n_individuals = c(1, 1),
+  n_days = c(1, 1)
 )
 }
 \references{

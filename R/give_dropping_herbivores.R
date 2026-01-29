@@ -32,10 +32,10 @@
 #' @examples
 #' library(waterbirds1.1)
 #' give_dropping_herbivores(
-#'   species_name = "Anas crecca",
-#'   n_individuals = 1,
-#'   n_days = 1,
-#'   var_season = "spring"
+#'   species_name = c("Anas crecca", "Anas platyrhynchos"),
+#'   n_individuals = c(1, 1),
+#'   n_days = c(1, 1),
+#'   var_season = c("spring", "winter")
 #' )
 
 give_dropping_herbivores <- function(
@@ -93,7 +93,7 @@ give_dropping_herbivores <- function(
   )
 
   # body mass (g, M in article)
-  body_mass <- var_species[var_species$species == species_name, "body_mass"]
+  body_mass <- var_species[var_species$species %in% species_name, "body_mass"]
 
   # food RT (h) = average time for food to pass a bird's digestive
   rt <- 10 ^ (-0.3196) * body_mass ^ 0.2020

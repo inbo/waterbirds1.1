@@ -36,9 +36,9 @@
 #' @examples
 #' library(waterbirds1.1)
 #' give_excretion_carnivores(
-#'   species_name = "Ardea cinerea",
-#'   n_individuals = 1,
-#'   n_days = 1
+#'   species_name = c("Ardea cinerea", "Phalacrocorax carbo"),
+#'   n_individuals = c(1, 1),
+#'   n_days = c(1, 1)
 #' )
 
 give_excretion_carnivores <- function(

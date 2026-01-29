@@ -43,9 +43,9 @@
 #' @examples
 #' library(waterbirds1.1)
 #' give_intake_carnivores(
-#'   species_name = "Ardea cinerea",
-#'   n_individuals = 1,
-#'   n_days = 1
+#'   species_name = c("Ardea cinerea", "Phalacrocorax carbo"),
+#'   n_individuals = c(1, 1),
+#'   n_days = c(1, 1)
 #' )
 
 give_intake_carnivores <- function(
@@ -120,16 +120,17 @@ give_intake_carnivores <- function(
 
 
   # portion of total nutrient release (A in article)
-  a <- prop_nutr_rel[var_species[var_species$species == species_name, "loader"]]
+  a <-
+    prop_nutr_rel[var_species[var_species$species %in% species_name, "loader"]]
   a <- unname(a)
 
   # body mass (g, M in article)
-  body_mass <- var_species[var_species$species == species_name, "body_mass"]
+  body_mass <- var_species[var_species$species %in% species_name, "body_mass"]
 
   # daily energy requirement (kJ/day, DER in article)
   der <- 10 ^ 1.0195 * body_mass ^ 0.6808
 
-  type_food <- var_species[var_species$species == species_name, "diet"]
+  type_food <- var_species[var_species$species %in% species_name, "diet"]
 
   # gross energy content of food (kJ/g, E in article)
   energy <- var_food[var_food$food == type_food, "energy"]

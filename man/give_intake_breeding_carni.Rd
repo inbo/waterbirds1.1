@@ -86,8 +86,8 @@ period (for the average clutch size of the nest).
 \examples{
 library(waterbirds1.1)
 give_intake_breeding_carni(
-  species_name = "Ardea cinerea",
-  n_nests = 1
+  species_name = c("Ardea cinerea", "Phalacrocorax carbo"),
+  n_nests = c(1, 1)
 )
 }
 \references{

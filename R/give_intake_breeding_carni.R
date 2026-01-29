@@ -55,8 +55,8 @@
 #' @examples
 #' library(waterbirds1.1)
 #' give_intake_breeding_carni(
-#'   species_name = "Ardea cinerea",
-#'   n_nests = 1
+#'   species_name = c("Ardea cinerea", "Phalacrocorax carbo"),
+#'   n_nests = c(1, 1)
 #' )
 
 give_intake_breeding_carni <- function(
@@ -173,19 +173,19 @@ give_intake_breeding_carni <- function(
   ]
 
   # body mass (g, M in article)
-  body_mass <- var_species[var_species$species == species_name, "body_mass"]
+  body_mass <- var_species[var_species$species %in% species_name, "body_mass"]
 
   # daily energy requirement (kJ/day, DER in article)
   der <- 10 ^ 1.0195 * body_mass ^ 0.6808
 
-  type_food <- var_species[var_species$species == species_name, "diet"]
+  type_food <- var_species[var_species$species %in% species_name, "diet"]
 
   # gross energy content of food (kJ/g, E in article)
   energy <- var_food[var_food$food == type_food, "energy"]
 
   # apparent metabolizable energy coëfficiënt (AM in article and table)
   # (=utilizable energy per unit food)
-  am <- var_food[var_food$food == type_food, "AM"]
+  am <- var_food[var_food$food %in% type_food, "AM"]
 
   # X_intake = nutrient composition of food (g/g), in table var_food
 
