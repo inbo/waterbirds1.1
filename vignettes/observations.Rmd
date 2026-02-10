@@ -26,8 +26,8 @@ How to deal with these data with respect to `waterbirds1.1`?
 
 - take the 75% quantile or the median of the 'reliable' data, as this operation is less vulnerable to aberrant outliers than for instance the mean.  The appropriate quantile (median, 75% or other) should be determined by a domain expert based on the expected underestimation of the bird observations relative to the actual presence.
 - in case there are observations with higher numbers of individuals, omit observations of only 1 individual because they are likely presence data and not count data
-- aggregate data (take the chosen quantile) over a period in which the observed numbers of this species are expected to be constant, e.g. a whole season, or the same period (or month) over multiple years (seasons defined in @hahn_estimating_2007 and @hahn_quantification_2008 are: winter from October to February, spring from March to April and summer from May to September)
-- fill in this value for each month of the aggregated period, also for months where no data are available
+- aggregate data (take the chosen quantile) over a period in which the observed numbers of this species are expected to be constant (ask a domain expert), e.g. a whole season, or the same period (or month) over multiple years (seasons defined in @hahn_estimating_2007 and @hahn_quantification_2008 are: winter from October to February, spring from March to April and summer from May to September; but it is not clear if bird numbers stay constant in these periods)
+- fill in this value for each month of the aggregated period
 - when no data are available, multiple imputation could be done (ask a statistician for help)
 
 # References
