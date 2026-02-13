@@ -67,18 +67,17 @@ calculating the nutrient input of nitrogen and phosphorus by waterbirds:
 R-package `waterbirds1.1` has generic functions `give_intake_model()`
 and `give_dropping_model()` for calculating these models that require a
 dataset with abundance data (and some predefined variables that default
-to the values suggested in *Hahn et al. (2007 and 2008)* but they can be
+to the values suggested in *Hahn et al. (2007 and 2008)* but that can be
 customised). These functions use predefined info to distinguish between
 carnivores and herbivores, and food type defaults to grass in case of
 the intake model of herbivores.
 
-As there are some caveats in the use of abundance data from
-[observations.be](https://observations.be/), we elaborated on this in
-`vignette("observations", package = "waterbirds1.1")`.
+A minimal code example on how to use these functions:
 
 ``` r
 library(waterbirds1.1)
 
+# make (or load) a dataset with abundance data:
 dataset <- data.frame(
   species = c("Anas crecca", "Ardea cinerea"),
   month = 3,
@@ -111,3 +110,7 @@ be used as well.
 
 All documentation on the use of the functions, including an example, can
 be accessed via `Reference` in the navigation bar.
+
+As there are some caveats in the use of abundance data from
+[observations.be](https://observations.be/), we elaborate on this in
+`vignette("observations", package = "waterbirds1.1")`.
