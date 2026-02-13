@@ -168,10 +168,12 @@ give_intake_model <- function(
     filter(.data$diet == "herbivore") |>
     mutate(
       give_intake_herbivores(
-        species_name = .data$species,
-        n_individuals = .data$n_individuals,
-        n_days = .data$n_days,
-        var_season = .data$season,
+        data.frame(
+          species_name = .data$species,
+          n_individuals = .data$n_individuals,
+          n_days = .data$n_days,
+          var_season = .data$season
+        ),
         type_food = type_food,
         var_species = var_species,
         terr_food_herbivores = terr_food_herbivores,
@@ -184,9 +186,11 @@ give_intake_model <- function(
         filter(.data$diet != "herbivore") |>
         mutate(
           give_intake_carnivores(
-            species_name = .data$species,
-            n_individuals = .data$n_individuals,
-            n_days = .data$n_days,
+            data.frame(
+              species_name = .data$species,
+              n_individuals = .data$n_individuals,
+              n_days = .data$n_days
+            ),
             var_species = var_species,
             var_food = var_food,
             prop_nutr_rel = prop_nutr_rel

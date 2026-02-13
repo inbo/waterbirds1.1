@@ -5,10 +5,7 @@
 \title{Calculate intake model for herbivores}
 \usage{
 give_intake_herbivores(
-  species_name,
-  n_individuals,
-  n_days,
-  var_season,
+  species_abundance,
   type_food = "grass",
   var_species = read.csv2(system.file("input_variables/var_species.csv", package =
     "waterbirds1.1")),
@@ -21,18 +18,20 @@ give_intake_herbivores(
 )
 }
 \arguments{
-\item{species_name}{(vector of) scientific name(s) of the herbivorous
-waterbird species (without author name)}
-
-\item{n_individuals}{(vector of) number of individuals of the species that
-are present on the water body}
-
-\item{n_days}{(vector of) number of days that the individuals of the species
-are present on the water body}
-
-\item{var_season}{(vector of) season(s) in which the given individuals of the
+\item{species_abundance}{data.frame giving the number of individuals of
+waterbirds that is seen each day in the given number of days with at least
+columns
+\itemize{
+\item \code{species_name}: the scientific name of the herbivorous waterbird species
+(without author name),
+\item \code{n_individuals} number of individuals of the species that are present
+on the water body,
+\item \code{n_days} number of days that the (given number of) individuals of the
+species are present on the water body
+\item \code{var_season} season(s) in which the given individuals of the
 species are present on the water body.
-Possible values are \code{spring}, \code{summer} and \code{winter}.}
+Possible values are \code{spring}, \code{summer} and \code{winter}.
+}}
 
 \item{type_food}{(vector of) type of food that is eaten by the species.
 Defaults to \code{grass}, the other option is \code{beet}.}
@@ -84,11 +83,15 @@ daily food intake (intake model, \emph{Hahn et al., 2008}).
 }
 \examples{
 library(waterbirds1.1)
-give_intake_herbivores(
+dataset <- data.frame(
   species_name = c("Anas crecca", "Anas platyrhynchos"),
   n_individuals = c(1, 1),
   n_days = c(1, 1),
   var_season = c("spring", "winter")
+)
+
+give_intake_herbivores(
+  species_abundance = dataset
 )
 }
 \references{

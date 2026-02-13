@@ -6,8 +6,15 @@
 #' steady-state with respect to the focal nutrient (intake model,
 #' \emph{Hahn et al., 2007}).
 #'
-#' @param species_name (vector of) scientific name(s) of the carnivorous
-#'   waterbird species (without author name)
+#' @param species_abundance data.frame giving the number of individuals of
+#'   waterbirds that is seen each day in the given number of days with at least
+#'   columns
+#'   - `species_name`: the scientific name of the carnivorous waterbird species
+#'   (without author name),
+#'   - `n_individuals` number of individuals of the species that are present
+#'   on the water body,
+#'   - `n_days` number of days that the (given number of) individuals of the
+#'   species are present on the water body.
 #' @param prop_nutr_rel portion of total nutrient release (A in article) as a
 #'   named vector giving 2 values:
 #'   "internal" giving the value for internal loaders
@@ -42,14 +49,18 @@
 #'
 #' @examples
 #' library(waterbirds1.1)
-#' give_intake_carnivores(
+#' dataset <- data.frame(
 #'   species_name = c("Ardea cinerea", "Phalacrocorax carbo"),
 #'   n_individuals = c(1, 1),
 #'   n_days = c(1, 1)
 #' )
+#'
+#' give_intake_carnivores(
+#'   species_abundance = dataset
+#' )
 
 give_intake_carnivores <- function(
-  species_name, n_individuals, n_days,
+  species_abundance,
   var_species = read.csv2(
     system.file("input_variables/var_species.csv", package = "waterbirds1.1")
   ),
@@ -101,15 +112,18 @@ give_intake_carnivores <- function(
   assert_that(all(var_food$P75 > 0))
   assert_that(all(var_food$P75 < 1))
 
-  assert_that(inherits(species_name, "character"))
-  assert_that(all(species_name %in% var_species$species))
+  assert_that(inherits(species_abundance, "data.frame"))
+  assert_that(has_name(species_abundance, "species_name"))
+  assert_that(inherits(species_abundance$species_name, "character"))
+  assert_that(all(species_abundance$species_name %in% var_species$species))
 
-  assert_that(inherits(n_individuals, "numeric") |
-                inherits(n_individuals, "integer"))
-  assert_that(length(n_individuals) == length(species_name))
+  assert_that(has_name(species_abundance, "n_individuals"))
+  assert_that(inherits(species_abundance$n_individuals, "numeric") |
+                inherits(species_abundance$n_individuals, "integer"))
 
-  assert_that(inherits(n_days, "numeric") | inherits(n_days, "integer"))
-  assert_that(length(n_days) == length(species_name))
+  assert_that(has_name(species_abundance, "n_days"))
+  assert_that(inherits(species_abundance$n_days, "numeric") |
+                inherits(species_abundance$n_days, "integer"))
 
   assert_that(inherits(prop_nutr_rel, "numeric"))
   assert_that(length(prop_nutr_rel) == 2)
@@ -120,51 +134,53 @@ give_intake_carnivores <- function(
 
 
   # portion of total nutrient release (A in article)
-  a <-
-    prop_nutr_rel[var_species[var_species$species %in% species_name, "loader"]]
-  a <- unname(a)
+  sa <- merge(
+    species_abundance, var_species, by.x = "species_name", by.y = "species"
+  )
+  sa$a <- prop_nutr_rel[sa$loader]
 
   # body mass (g, M in article)
-  body_mass <- var_species[var_species$species %in% species_name, "body_mass"]
+  sa$body_mass
 
   # daily energy requirement (kJ/day, DER in article)
-  der <- 10 ^ 1.0195 * body_mass ^ 0.6808
+  sa$der <- 10 ^ 1.0195 * sa$body_mass ^ 0.6808
 
-  type_food <- var_species[var_species$species %in% species_name, "diet"]
+  sa <- merge(sa, var_food, by.x = "diet", by.y = "food")
 
   # gross energy content of food (kJ/g, E in article)
-  energy <- var_food[var_food$food == type_food, "energy"]
+  sa$energy
 
   # apparent metabolizable energy coëfficiënt (AM in article and table)
   # (=utilizable energy per unit food)
-  am <- var_food[var_food$food == type_food, "AM"]
+  sa$am <- sa$AM
 
   # X_intake = nutrient composition of food (g/g), in table var_food
 
   # nutrient input of non-breeding birds (g/day)
   # X_nb-intake = A * DER / (E * AM) * X_intake  #nolint: commented_code_linter
   # units: g/day = kJ/day / (kJ/g) * g/g         #nolint: commented_code_linter
-  x_nb_intake <- a * der / (energy * am) #* X_intake, which we add later
+  sa$x_nb_intake <- sa$a * sa$der / (sa$energy * sa$am) # * X_intake (add later)
   # total nutrient input in kg
-  x_tot <- x_nb_intake * n_individuals * n_days * 10 ^ -3 # * X_intake
+  sa$x_tot <-
+    sa$x_nb_intake * sa$n_individuals * sa$n_days * 10 ^ -3 # * X_intake
 
-  n_tot_25 <- x_tot * var_food[var_food$food == type_food, "N25"]
-  n_tot_50 <- x_tot * var_food[var_food$food == type_food, "N50"]
-  n_tot_75 <- x_tot * var_food[var_food$food == type_food, "N75"]
-  p_tot_25 <- x_tot * var_food[var_food$food == type_food, "P25"]
-  p_tot_50 <- x_tot * var_food[var_food$food == type_food, "P50"]
-  p_tot_75 <- x_tot * var_food[var_food$food == type_food, "P75"]
+  sa$n_tot_25 <- sa$x_tot * sa$N25
+  sa$n_tot_50 <- sa$x_tot * sa$N50
+  sa$n_tot_75 <- sa$x_tot * sa$N75
+  sa$p_tot_25 <- sa$x_tot * sa$P25
+  sa$p_tot_50 <- sa$x_tot * sa$P50
+  sa$p_tot_75 <- sa$x_tot * sa$P75
 
   return(
     data.frame(
-      species_name = species_name,
-      n_individuals = n_individuals,
-      n_tot_25 = n_tot_25,
-      n_tot_50 = n_tot_50,
-      n_tot_75 = n_tot_75,
-      p_tot_25 = p_tot_25,
-      p_tot_50 = p_tot_50,
-      p_tot_75 = p_tot_75
+      species_name = sa$species_name,
+      n_individuals = sa$n_individuals,
+      n_tot_25 = sa$n_tot_25,
+      n_tot_50 = sa$n_tot_50,
+      n_tot_75 = sa$n_tot_75,
+      p_tot_25 = sa$p_tot_25,
+      p_tot_50 = sa$p_tot_50,
+      p_tot_75 = sa$p_tot_75
     )
   )
 }

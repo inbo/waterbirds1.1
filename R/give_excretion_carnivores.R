@@ -35,14 +35,18 @@
 #'
 #' @examples
 #' library(waterbirds1.1)
+#' dataset <- data.frame(
+#'   species_name = c("Ardea cinerea", "Phalacrocorax carbo", "Ardea cinerea"),
+#'   n_individuals = c(1, 1, 1),
+#'   n_days = c(1, 1, 1)
+#' )
+#'
 #' give_excretion_carnivores(
-#'   species_name = c("Ardea cinerea", "Phalacrocorax carbo"),
-#'   n_individuals = c(1, 1),
-#'   n_days = c(1, 1)
+#'   species_abundance = dataset
 #' )
 
 give_excretion_carnivores <- function(
-  species_name, n_individuals, n_days,
+  species_abundance,
   var_species = read.csv2(
     system.file("input_variables/var_species.csv", package = "waterbirds1.1")
   ),
@@ -97,15 +101,18 @@ give_excretion_carnivores <- function(
   assert_that(all(var_food$P75 > 0))
   assert_that(all(var_food$P75 < 1))
 
-  assert_that(inherits(species_name, "character"))
-  assert_that(all(species_name %in% var_species$species))
+  assert_that(inherits(species_abundance, "data.frame"))
+  assert_that(has_name(species_abundance, "species_name"))
+  assert_that(inherits(species_abundance$species_name, "character"))
+  assert_that(all(species_abundance$species_name %in% var_species$species))
 
-  assert_that(inherits(n_individuals, "numeric") |
-                inherits(n_individuals, "integer"))
-  assert_that(length(n_individuals) == length(species_name))
+  assert_that(has_name(species_abundance, "n_individuals"))
+  assert_that(inherits(species_abundance$n_individuals, "numeric") |
+                inherits(species_abundance$n_individuals, "integer"))
 
-  assert_that(inherits(n_days, "numeric") | inherits(n_days, "integer"))
-  assert_that(length(n_days) == length(species_name))
+  assert_that(has_name(species_abundance, "n_days"))
+  assert_that(inherits(species_abundance$n_days, "numeric") |
+                inherits(species_abundance$n_days, "integer"))
 
   assert_that(inherits(prop_nutr_rel, "numeric"))
   assert_that(length(prop_nutr_rel) == 2)
@@ -131,23 +138,24 @@ give_excretion_carnivores <- function(
 
 
   # portion of total nutrient release (A in article)
-  a <- prop_nutr_rel[var_species[var_species$species == species_name, "loader"]]
-  a <- unname(a)
+  sa <- merge(
+    species_abundance, var_species, by.x = "species_name", by.y = "species"
+  )
+  sa$a <- prop_nutr_rel[sa$loader]
 
   # body mass (g, M in article)
-  body_mass <- var_species[var_species$species == species_name, "body_mass"]
+  sa$body_mass
 
   # daily energy requirement (kJ/day, DER in article)
-  der <- 10 ^ 1.0195 * body_mass ^ 0.6808
-
-  type_food <- var_species[var_species$species == species_name, "diet"]
+  sa$der <- 10 ^ 1.0195 * sa$body_mass ^ 0.6808
 
   # gross energy content of food (kJ/g, E in article)
-  energy <- var_food[var_food$food == type_food, "energy"]
+  sa <- merge(sa, var_food, by.x = "diet", by.y = "food")
+  sa$energy
 
   # apparent metabolizable energy coëfficiënt (AM in article and table)
   # (=utilizable energy per unit food)
-  am <- var_food[var_food$food == type_food, "AM"]
+  sa$am <- sa$AM
 
   # X_excr = nutrient concentration (g/g)
   # n_excr <- 0.103 and P_excr
@@ -155,19 +163,19 @@ give_excretion_carnivores <- function(
   # nutrient input of non-breeding birds (g/day)
   # X_nb-excr = A * alpha * DER / (E * AM) * X_excr  #nolint: line_length_linter
   # units: g/day = g/g * kJ/day / (kJ/g) * g/g       #nolint: line_length_linter
-  n_nb_excr <- a * alpha * der / (energy * am) * n_excr
-  p_nb_excr <- a * alpha * der / (energy * am) * p_excr
+  sa$n_nb_excr <- sa$a * alpha * sa$der / (sa$energy * sa$am) * n_excr
+  sa$p_nb_excr <- sa$a * alpha * sa$der / (sa$energy * sa$am) * p_excr
 
   # total nutrient input in kg
-  n_tot <- n_nb_excr * n_individuals * n_days * 10 ^ -3
-  p_tot <- p_nb_excr * n_individuals * n_days * 10 ^ -3
+  sa$n_tot <- sa$n_nb_excr * sa$n_individuals * sa$n_days * 10 ^ -3
+  sa$p_tot <- sa$p_nb_excr * sa$n_individuals * sa$n_days * 10 ^ -3
 
   return(
     data.frame(
-      species_name = species_name,
-      n_individuals = n_individuals,
-      n_tot = n_tot,
-      p_tot = p_tot
+      species_name = sa$species_name,
+      n_individuals = sa$n_individuals,
+      n_tot = sa$n_tot,
+      p_tot = sa$p_tot
     )
   )
 }

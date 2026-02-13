@@ -5,9 +5,7 @@
 \title{Calculate excretion model for non-breeding carnivores}
 \usage{
 give_excretion_carnivores(
-  species_name,
-  n_individuals,
-  n_days,
+  species_abundance,
   var_species = read.csv2(system.file("input_variables/var_species.csv", package =
     "waterbirds1.1")),
   var_food = read.csv2(system.file("input_variables/var_food.csv", package =
@@ -19,14 +17,17 @@ give_excretion_carnivores(
 )
 }
 \arguments{
-\item{species_name}{(vector of) scientific name(s) of the carnivorous
-waterbird species (without author name)}
-
-\item{n_individuals}{(vector of) number of individuals of the species that
-are present on the water body}
-
-\item{n_days}{(vector of) number of days that the individuals of the species
-are present on the water body}
+\item{species_abundance}{data.frame giving the number of individuals of
+waterbirds that is seen each day in the given number of days with at least
+columns
+\itemize{
+\item \code{species_name}: the scientific name of the carnivorous waterbird species
+(without author name),
+\item \code{n_individuals} number of individuals of the species that are present
+on the water body,
+\item \code{n_days} number of days that the (given number of) individuals of the
+species are present on the water body.
+}}
 
 \item{var_species}{table (data.frame) with waterbird data with at least
 columns \code{species} (scientific name), \code{body_mass} (weight in g) and
@@ -79,10 +80,14 @@ excrement productions directly (excretion model, \emph{Hahn et al., 2007}).
 }
 \examples{
 library(waterbirds1.1)
+dataset <- data.frame(
+  species_name = c("Ardea cinerea", "Phalacrocorax carbo", "Ardea cinerea"),
+  n_individuals = c(1, 1, 1),
+  n_days = c(1, 1, 1)
+)
+
 give_excretion_carnivores(
-  species_name = c("Ardea cinerea", "Phalacrocorax carbo"),
-  n_individuals = c(1, 1),
-  n_days = c(1, 1)
+  species_abundance = dataset
 )
 }
 \references{

@@ -4,13 +4,16 @@
 #' by herbivorous waterbirds based on mass-specific energy requirement and
 #' daily food intake (intake model, \emph{Hahn et al., 2008}).
 #'
-#' @param species_name (vector of) scientific name(s) of the herbivorous
-#'   waterbird species (without author name)
-#' @param n_individuals (vector of) number of individuals of the species that
-#'   are present on the water body
-#' @param n_days (vector of) number of days that the individuals of the species
-#'   are present on the water body
-#' @param var_season (vector of) season(s) in which the given individuals of the
+#' @param species_abundance data.frame giving the number of individuals of
+#'   waterbirds that is seen each day in the given number of days with at least
+#'   columns
+#'   - `species_name`: the scientific name of the herbivorous waterbird species
+#'   (without author name),
+#'   - `n_individuals` number of individuals of the species that are present
+#'   on the water body,
+#'   - `n_days` number of days that the (given number of) individuals of the
+#'   species are present on the water body
+#'   - `var_season` season(s) in which the given individuals of the
 #'   species are present on the water body.
 #'   Possible values are `spring`, `summer` and `winter`.
 #' @param type_food (vector of) type of food that is eaten by the species.
@@ -67,15 +70,19 @@
 #'
 #' @examples
 #' library(waterbirds1.1)
-#' give_intake_herbivores(
+#' dataset <- data.frame(
 #'   species_name = c("Anas crecca", "Anas platyrhynchos"),
 #'   n_individuals = c(1, 1),
 #'   n_days = c(1, 1),
 #'   var_season = c("spring", "winter")
 #' )
+#'
+#' give_intake_herbivores(
+#'   species_abundance = dataset
+#' )
 
 give_intake_herbivores <- function(
-  species_name, n_individuals, n_days, var_season,
+  species_abundance,
   type_food = "grass",
   var_species = read.csv2(
     system.file("input_variables/var_species.csv", package = "waterbirds1.1")
@@ -146,60 +153,72 @@ give_intake_herbivores <- function(
   assert_that(all(var_food$P75 > 0))
   assert_that(all(var_food$P75 < 1))
 
-  assert_that(inherits(species_name, "character"))
-  assert_that(all(species_name %in% var_species$species))
-  assert_that(all(species_name %in% terr_food_herbivores$species))
-
-  assert_that(inherits(n_individuals, "numeric") |
-                inherits(n_individuals, "integer"))
-  assert_that(length(n_individuals) == length(species_name))
-
-  assert_that(inherits(n_days, "numeric") | inherits(n_days, "integer"))
-  assert_that(length(n_days) == length(species_name))
-
-  assert_that(inherits(var_season, "character"))
-  assert_that(all(var_season %in% c("spring", "summer", "winter")))
+  assert_that(inherits(species_abundance, "data.frame"))
+  assert_that(has_name(species_abundance, "species_name"))
+  assert_that(inherits(species_abundance$species_name, "character"))
+  assert_that(all(species_abundance$species_name %in% var_species$species))
   assert_that(
-    length(var_season) == length(species_name) || length(var_season) == 1
+    all(species_abundance$species_name %in% terr_food_herbivores$species)
+  )
+
+  assert_that(has_name(species_abundance, "n_individuals"))
+  assert_that(inherits(species_abundance$n_individuals, "numeric") |
+                inherits(species_abundance$n_individuals, "integer"))
+
+  assert_that(has_name(species_abundance, "n_days"))
+  assert_that(inherits(species_abundance$n_days, "numeric") |
+                inherits(species_abundance$n_days, "integer"))
+
+  assert_that(has_name(species_abundance, "var_season"))
+  assert_that(inherits(species_abundance$var_season, "character"))
+  assert_that(
+    all(species_abundance$var_season %in% c("spring", "summer", "winter"))
   )
 
   assert_that(inherits(type_food, "character"))
   assert_that(all(type_food %in% c("grass", "beet")))
   assert_that(
-    length(type_food) == length(species_name) || length(type_food) == 1
+    length(type_food) == length(species_abundance$species_name) ||
+      length(type_food) == 1
   )
   assert_that(all(type_food %in% var_food$food))
+  species_abundance$type_food <- type_food
 
   assert_that(inherits(foraging_time, "numeric") |
                 inherits(foraging_time, "numeric"))
 
+  sa <- merge(
+    species_abundance, var_species, by.x = "species_name", by.y = "species"
+  )
+
   # body mass (g, M in article)
-  body_mass <- var_species[var_species$species == species_name, "body_mass"]
+  sa$body_mass
 
   # daily energy requirement (kJ/day, DER in article)
-  der <- 10 ^ 1.0195 * body_mass ^ 0.6808
+  sa$der <- 10 ^ 1.0195 * sa$body_mass ^ 0.6808
 
   # energy content of the terrestrial diet (kJ/g, E in article)
-  energy <- var_food[var_food$food == type_food, "energy"]
+  sa <- merge(sa, var_food, by.x = "type_food", by.y = "food")
+  sa$energy
 
   # AM = apparent metabolizable energy coëfficiënt (AM in article and table)
-  am <- var_food[var_food$food == type_food, "AM"]
+  sa$am <- sa$AM
 
   # f_t = the species and season-specific proportion of energy obtained from
   # terrestrial food relative to the total amount of energy required
-  f_t <- terr_food_herbivores[
-    terr_food_herbivores$species == species_name &
-      terr_food_herbivores$season == var_season,
-    "f_t"
-  ]
+  sa <- merge(
+    sa, terr_food_herbivores,
+    by.x = c("species_name", "var_season"), by.y = c("species", "season")
+  )
+  sa$f_t
 
   # daily terrestrial food intake (g/day, DFI_t in article)
-  dft_t <- f_t * der / (energy * am)
+  sa$dft_t <- sa$f_t * sa$der / (sa$energy * sa$am)
   # units: g/day = kJ/day / (kJ/g)   #nolint: commented_code_linter
 
   # ratio of retention time = average time for food to pass a bird's digestive
   # track (h, RT in article)
-  rt <- 10 ^ (-0.3196) * body_mass ^ 0.2020
+  sa$rt <- 10 ^ (-0.3196) * sa$body_mass ^ 0.2020
 
   # T_f = total foraging time (h) = variable foraging_time
 
@@ -209,28 +228,28 @@ give_intake_herbivores <- function(
   # formula: X_ai = RT / T_f * DFI_t * X_food  #nolint: commented_code_linter
   # units: g/day = h / h * g/day * g/g         #nolint: commented_code_linter
 
-  x_ai <- rt / foraging_time * dft_t # * X_food, which we do later
+  sa$x_ai <- sa$rt / foraging_time * sa$dft_t # * X_food, which we do later
   # total nutrient input in kg
-  x_tot <- x_ai * n_individuals * n_days * 10 ^ -3 # * X_food
+  sa$x_tot <- sa$x_ai * sa$n_individuals * sa$n_days * 10 ^ -3 # * X_food
 
-  n_tot_25 <- x_tot * var_food[var_food$food == type_food, "N25"]
-  n_tot_50 <- x_tot * var_food[var_food$food == type_food, "N50"]
-  n_tot_75 <- x_tot * var_food[var_food$food == type_food, "N75"]
-  p_tot_25 <- x_tot * var_food[var_food$food == type_food, "P25"]
-  p_tot_50 <- x_tot * var_food[var_food$food == type_food, "P50"]
-  p_tot_75 <- x_tot * var_food[var_food$food == type_food, "P75"]
+  sa$n_tot_25 <- sa$x_tot * sa$N25
+  sa$n_tot_50 <- sa$x_tot * sa$N50
+  sa$n_tot_75 <- sa$x_tot * sa$N75
+  sa$p_tot_25 <- sa$x_tot * sa$P25
+  sa$p_tot_50 <- sa$x_tot * sa$P50
+  sa$p_tot_75 <- sa$x_tot * sa$P75
 
   return(
     data.frame(
-      species_name = species_name,
-      n_individuals = n_individuals,
-      var_season = var_season,
-      n_tot_25 = n_tot_25,
-      n_tot_50 = n_tot_50,
-      n_tot_75 = n_tot_75,
-      p_tot_25 = p_tot_25,
-      p_tot_50 = p_tot_50,
-      p_tot_75 = p_tot_75
+      species_name = sa$species_name,
+      n_individuals = sa$n_individuals,
+      var_season = sa$var_season,
+      n_tot_25 = sa$n_tot_25,
+      n_tot_50 = sa$n_tot_50,
+      n_tot_75 = sa$n_tot_75,
+      p_tot_25 = sa$p_tot_25,
+      p_tot_50 = sa$p_tot_50,
+      p_tot_75 = sa$p_tot_75
     )
   )
 }

@@ -31,15 +31,19 @@
 #'
 #' @examples
 #' library(waterbirds1.1)
-#' give_dropping_herbivores(
+#' dataset <- data.frame(
 #'   species_name = c("Anas crecca", "Anas platyrhynchos"),
 #'   n_individuals = c(1, 1),
 #'   n_days = c(1, 1),
 #'   var_season = c("spring", "winter")
 #' )
+#'
+#' give_dropping_herbivores(
+#'   species_abundance = dataset
+#' )
 
 give_dropping_herbivores <- function(
-  species_name, n_individuals, n_days, var_season,
+  species_abundance,
   var_species = read.csv2(
     system.file("input_variables/var_species.csv", package = "waterbirds1.1")
   ),
@@ -75,63 +79,72 @@ give_dropping_herbivores <- function(
   assert_that(all(terr_food_herbivores$f_t >= 0))
   assert_that(all(terr_food_herbivores$f_t <= 1))
 
-  assert_that(inherits(species_name, "character"))
-  assert_that(all(species_name %in% var_species$species))
-  assert_that(all(species_name %in% terr_food_herbivores$species))
-
-  assert_that(inherits(n_individuals, "numeric") |
-                inherits(n_individuals, "integer"))
-  assert_that(length(n_individuals) == length(species_name))
-
-  assert_that(inherits(n_days, "numeric") | inherits(n_days, "integer"))
-  assert_that(length(n_days) == length(species_name))
-
-  assert_that(inherits(var_season, "character"))
-  assert_that(all(var_season %in% c("spring", "summer", "winter")))
+  assert_that(inherits(species_abundance, "data.frame"))
+  assert_that(has_name(species_abundance, "species_name"))
+  assert_that(inherits(species_abundance$species_name, "character"))
+  assert_that(all(species_abundance$species_name %in% var_species$species))
   assert_that(
-    length(var_season) == length(species_name) || length(var_season) == 1
+    all(species_abundance$species_name %in% terr_food_herbivores$species)
+  )
+
+  assert_that(has_name(species_abundance, "n_individuals"))
+  assert_that(inherits(species_abundance$n_individuals, "numeric") |
+                inherits(species_abundance$n_individuals, "integer"))
+
+  assert_that(has_name(species_abundance, "n_days"))
+  assert_that(inherits(species_abundance$n_days, "numeric") |
+                inherits(species_abundance$n_days, "integer"))
+
+  assert_that(has_name(species_abundance, "var_season"))
+  assert_that(inherits(species_abundance$var_season, "character"))
+  assert_that(
+    all(species_abundance$var_season %in% c("spring", "summer", "winter"))
+  )
+
+
+  sa <- merge(
+    species_abundance, var_species, by.x = "species_name", by.y = "species"
   )
 
   # body mass (g, M in article)
-  body_mass <- var_species[var_species$species %in% species_name, "body_mass"]
+  sa$body_mass
 
   # food RT (h) = average time for food to pass a bird's digestive
-  rt <- 10 ^ (-0.3196) * body_mass ^ 0.2020
+  sa$rt <- 10 ^ (-0.3196) * sa$body_mass ^ 0.2020
 
   # dropping mass (g, DrM in article)
-  drm <- 10 ^ (-3.065) * body_mass ^ 0.8901
+  sa$drm <- 10 ^ (-3.065) * sa$body_mass ^ 0.8901
 
   # DrR = dropping rate (numbers of droppings / h, DrR in article)
-  drr <-  10 ^ 2.130 * body_mass ^ (-0.3065)
+  sa$drr <-  10 ^ 2.130 * sa$body_mass ^ (-0.3065)
 
   # X_drop = elemental concentration in droppings (mg/g)
   # n_drop and p_drop
 
   # f_t = proportion of droppings originating from terrestrial food
-  f_t <- terr_food_herbivores[
-    terr_food_herbivores$species == species_name &
-      terr_food_herbivores$season == var_season,
-    "f_t"
-  ]
+  sa <- merge(
+    sa, terr_food_herbivores,
+    by.x = c("species_name", "var_season"), by.y = c("species", "season")
+  )
 
   # allochthonous nutrient input into a freshwater body (g/day, X_ai in article)
   # formula: X_ai = f_t * RT * DrM * DrR * X_drop #nolint: commented_code_linter
   # units: g/day = h * g * 1/h * mg/g * 10 ^ -3   #nolint: commented_code_linter
 
-  n_ai <- f_t * rt * drm * drr * n_drop * 10 ^ -3
-  p_ai <- f_t * rt * drm * drr * p_drop * 10 ^ -3
+  sa$n_ai <- sa$f_t * sa$rt * sa$drm * sa$drr * n_drop * 10 ^ -3
+  sa$p_ai <- sa$f_t * sa$rt * sa$drm * sa$drr * p_drop * 10 ^ -3
 
   # total nutrient input in kg
-  n_tot <- n_ai * n_individuals * n_days * 10 ^ -3
-  p_tot <- p_ai * n_individuals * n_days * 10 ^ -3
+  sa$n_tot <- sa$n_ai * sa$n_individuals * sa$n_days * 10 ^ -3
+  sa$p_tot <- sa$p_ai * sa$n_individuals * sa$n_days * 10 ^ -3
 
   return(
     data.frame(
-      species_name = species_name,
-      n_individuals = n_individuals,
-      var_season = var_season,
-      n_tot = n_tot,
-      p_tot = p_tot
+      species_name = sa$species_name,
+      n_individuals = sa$n_individuals,
+      var_season = sa$var_season,
+      n_tot = sa$n_tot,
+      p_tot = sa$p_tot
     )
   )
 }

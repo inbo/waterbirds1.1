@@ -5,8 +5,7 @@
 \title{Calculate excretion model for breeding carnivores}
 \usage{
 give_excretion_breeding_carni(
-  species_name,
-  n_nests,
+  species_nests,
   var_species = read.csv2(system.file("input_variables/var_species.csv", package =
     "waterbirds1.1")),
   var_food = read.csv2(system.file("input_variables/var_food.csv", package =
@@ -22,10 +21,13 @@ give_excretion_breeding_carni(
 )
 }
 \arguments{
-\item{species_name}{(vector of) scientific name(s) of the carnivorous
-waterbird species (without author name)}
-
-\item{n_nests}{number of nests or number of breeding pairs}
+\item{species_nests}{data.frame giving the number of nests of waterbird
+species with at least columns
+\itemize{
+\item \code{species_name}: the scientific name of the carnivorous waterbird species
+(without author name),
+\item \code{n_nests} number of nests or number of breeding pairs.
+}}
 
 \item{var_species}{table (data.frame) with waterbird data with at least
 columns \code{species} (scientific name), \code{body_mass} (weight in g) and
@@ -93,9 +95,13 @@ period (for the average clutch size of the nest).
 }
 \examples{
 library(waterbirds1.1)
-give_excretion_breeding_carni(
+dataset <- data.frame(
   species_name = c("Ardea cinerea", "Phalacrocorax carbo"),
   n_nests = c(1, 1)
+)
+
+give_excretion_breeding_carni(
+  species_nests = dataset
 )
 }
 \references{

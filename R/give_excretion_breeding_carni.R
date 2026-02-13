@@ -40,13 +40,17 @@
 #'
 #' @examples
 #' library(waterbirds1.1)
-#' give_excretion_breeding_carni(
+#' dataset <- data.frame(
 #'   species_name = c("Ardea cinerea", "Phalacrocorax carbo"),
 #'   n_nests = c(1, 1)
 #' )
+#'
+#' give_excretion_breeding_carni(
+#'   species_nests = dataset
+#' )
 
 give_excretion_breeding_carni <- function(
-  species_name, n_nests,
+  species_nests,
   var_species = read.csv2(
     system.file("input_variables/var_species.csv", package = "waterbirds1.1")
   ),
@@ -133,12 +137,23 @@ give_excretion_breeding_carni <- function(
         breeding_carnivores$nesting_period > 0
     )
   )
+  if (has_name(breeding_carnivores, "common_name")) {
+    breeding_carnivores$common_name <- NULL
+  }
+  if (has_name(breeding_carnivores, "body_mass")) {
+    breeding_carnivores$body_mass <- NULL
+  }
 
-  assert_that(inherits(species_name, "character"))
-  assert_that(all(species_name %in% var_species$species))
+  assert_that(inherits(species_nests, "data.frame"))
+  assert_that(has_name(species_nests, "species_name"))
+  assert_that(inherits(species_nests$species_name, "character"))
+  assert_that(all(species_nests$species_name %in% var_species$species))
 
-  assert_that(inherits(n_nests, "numeric") | inherits(n_nests, "integer"))
-  assert_that(length(n_nests) == length(species_name))
+  assert_that(has_name(species_nests, "n_nests"))
+  assert_that(
+    inherits(species_nests$n_nests, "numeric") |
+      inherits(species_nests$n_nests, "integer")
+  )
 
   assert_that(inherits(alpha, "numeric"))
   assert_that(length(alpha) == 1)
@@ -172,24 +187,26 @@ give_excretion_breeding_carni <- function(
   a <- 1
 
   # n_days = duration of the nesting period
-  n_days <- breeding_carnivores[
-    breeding_carnivores$species == species_name, "nesting_period"
-  ]
+  sn <- merge(
+    species_nests, breeding_carnivores, by.x = "species_name", by.y = "species"
+  )
+  sn$n_days <- sn$nesting_period
 
   # body mass (g, M in article)
-  body_mass <- var_species[var_species$species == species_name, "body_mass"]
+  sn <- merge(sn, var_species, by.x = "species_name", by.y = "species")
+  sn$body_mass
 
   # daily energy requirement (kJ/day, DER in article)
-  der <- 10 ^ 1.0195 * body_mass ^ 0.6808
+  sn$der <- 10 ^ 1.0195 * sn$body_mass ^ 0.6808
 
-  type_food <- var_species[var_species$species == species_name, "diet"]
+  sn <- merge(sn, var_food, by.x = "diet", by.y = "food")
 
   # gross energy content of food (kJ/g, E in article)
-  energy <- var_food[var_food$food == type_food, "energy"]
+  sn$energy
 
   # apparent metabolizable energy coëfficiënt (AM in article and table)
   # (=utilizable energy per unit food)
-  am <- var_food[var_food$food == type_food, "AM"]
+  sn$am <- sn$AM
 
   # X_excr = nutrient concentration (g/g)
   # n_excr and P_excr
@@ -197,12 +214,12 @@ give_excretion_breeding_carni <- function(
   # nutrient input of non-breeding birds (g/day)
   # X_nb-excr = A * alpha * DER / (E * AM) * X_excr  #nolint: line_length_linter
   # units: g/day = g/g * kJ/day / (kJ/g) * g/g       #nolint: line_length_linter
-  n_nb_excr <- a * alpha * der / (energy * am) * n_excr
-  p_nb_excr <- a * alpha * der / (energy * am) * p_excr
+  sn$n_nb_excr <- a * alpha * sn$der / (sn$energy * sn$am) * n_excr
+  sn$p_nb_excr <- a * alpha * sn$der / (sn$energy * sn$am) * p_excr
 
   # total nutrient input in kg
-  n_adult <- n_nb_excr * n_nests * n_days * 10 ^ -3
-  p_adult <- p_nb_excr * n_nests * n_days * 10 ^ -3
+  sn$n_adult <- sn$n_nb_excr * sn$n_nests * sn$n_days * 10 ^ -3
+  sn$p_adult <- sn$p_nb_excr * sn$n_nests * sn$n_days * 10 ^ -3
 
 
   # CHICKS
@@ -211,46 +228,42 @@ give_excretion_breeding_carni <- function(
   # during the growth period
 
   # TER_chick = total energy requirement over entire chick rearing period (kJ)
-  ter_chick <- 28.43 * body_mass ^ 1.062
+  sn$ter_chick <- 28.43 * sn$body_mass ^ 1.062
   # body_mass = body mass of adult birds in g
   # E and AM equal to 'adult' values
   # X_offspring
 
   # CS = species-specific mean clutch size (table 2)
-  cs <- breeding_carnivores[
-    breeding_carnivores$species == species_name, "clutch_size"
-  ]
+  sn$cs <- sn$clutch_size
 
   # correction factor beta
   beta
 
-  egg_mass  <- breeding_carnivores[
-    breeding_carnivores$species == species_name, "egg_mass"
-  ]
+  sn$egg_mass
 
   # X_syn = total amount of N and P fixed in a chick's body (in %)
-  n_syn <- n_perc_body * (body_mass - 0.72 * egg_mass)
-  p_syn <- p_perc_body * (body_mass - 0.72 * egg_mass)
+  sn$n_syn <- n_perc_body * (sn$body_mass - 0.72 * sn$egg_mass)
+  sn$p_syn <- p_perc_body * (sn$body_mass - 0.72 * sn$egg_mass)
 
   # X_offspr_excr = beta * CS * (alpha * TER_chick / (AM * E) * X_excr - X_syn)  #nolint
   # units: g = kJ / (kJ / g) * g / g     #nolint: commented_code_linter
-  n_offspring <-
-    beta * cs * (alpha * ter_chick / (am * energy) * n_excr - n_syn) * 10 ^ -3
-  p_offspring <-
-    beta * cs * (alpha * ter_chick / (am * energy) * p_excr - p_syn) * 10 ^ -3
+  sn$n_offspring <- beta * sn$cs *
+    (alpha * sn$ter_chick / (sn$am * sn$energy) * n_excr - sn$n_syn) * 10 ^ -3
+  sn$p_offspring <- beta * sn$cs *
+    (alpha * sn$ter_chick / (sn$am * sn$energy) * p_excr - sn$p_syn) * 10 ^ -3
 
 
   # TOTAL NUTRIENT RELEASE FOR ADULT AND CHICK
-  n_tot <- n_adult + n_offspring
-  p_tot <- p_adult + p_offspring
+  sn$n_tot <- sn$n_adult + sn$n_offspring
+  sn$p_tot <- sn$p_adult + sn$p_offspring
 
 
   return(
     data.frame(
-      species_name = species_name,
-      n_nests = n_nests,
-      n_tot = n_tot,
-      p_tot = p_tot
+      species_name = sn$species_name,
+      n_nests = sn$n_nests,
+      n_tot = sn$n_tot,
+      p_tot = sn$p_tot
     )
   )
 }
