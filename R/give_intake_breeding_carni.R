@@ -20,7 +20,8 @@
 #'   `clutch_size` (species-specific mean clutch size) and
 #'   `nesting_period` (duration of the nesting period in days).
 #'   Defaults to the table provided in this package that can be accessed by
-#'   `read.csv2(system.file("input_variables/breeding_carnivores.csv", package = "waterbirds1.1"))`.
+#'   `read.csv2(system.file("input_variables/breeding_carnivores.csv",
+#'   package = "waterbirds1.1"))`.
 #' @param beta correction factor for chicks perishing during growth period,
 #'   defaults to 0.5 (referenced in the article \emph{Hahn et al., 2007})
 #' @param n_perc_body average nitrogen content of a complete bird body,

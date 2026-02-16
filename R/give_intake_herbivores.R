@@ -25,14 +25,16 @@
 #'   "mix (in)vertebrates" (= carnivores with a mixed diet of vertebrates and
 #'   invertebrates, e.g. fish and insects).
 #'   Defaults to the table provided in this package that can be accessed by
-#'   `read.csv2(system.file("input_variables/var_species.csv", package = "waterbirds1.1"))`.
+#'   `read.csv2(system.file("input_variables/var_species.csv", package =
+#'   "waterbirds1.1"))`.
 #' @param terr_food_herbivores table (data.frame) with the species and
 #'   season-specific proportion of energy obtained from terrestrial food
 #'   relative to the total amount of energy required ($f_t$), with at least
 #'   columns `species` (scientific name), `season` ("spring", "summer" or
 #'   "winter") and `f_t`.
 #'   Defaults to the table provided in this package that can be accessed by
-#'   `read.csv2(system.file("input_variables/terr_food_herbivores.csv", package = "waterbirds1.1"))`.
+#'   `read.csv2(system.file("input_variables/terr_food_herbivores.csv",
+#'   package = "waterbirds1.1"))`.
 #' @param var_food table (data.frame) on food types with at least columns
 #'   `food` (with values grass and beet),
 #'   `enery` (energy content of the terrestrial diet in kJ/g),
@@ -42,7 +44,8 @@
 #'   phosphorus (P) in the food type.
 #'   Data are given as g N or P per g food dry weight.).
 #'   Defaults to the table provided in this package that can be accessed by
-#'   `read.csv2(system.file("input_variables/var_food.csv", package = "waterbirds1.1"))`.
+#'   `read.csv2(system.file("input_variables/var_food.csv", package =
+#'   "waterbirds1.1"))`.
 #' @param foraging_time total foraging time in hours (T_f), defaults to 12 h
 #'
 #' @return data.frame with columns `species_name`, `n_individuals` and
