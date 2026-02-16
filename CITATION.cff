@@ -22,4 +22,4 @@ abstract: "Tool to calculate the nutrient input by waterbirds, based on the tool
   v1.1 (2007) from S. Bauwer & S. Hahn, Netherlands Institute of Ecology (NIOO-KNAW)
   and the related publications Hahn et al. (2007, Freshwater Biology) and Hahn et
   al. (2008, Freshwater Biology)."
-version: 0.0.0
+version: 0.0.1

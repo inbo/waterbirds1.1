@@ -1,6 +1,6 @@
 {
   "title": "waterbirds1.1: Nutrient Input by Waterbirds",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "GPL-3.0",
   "upload_type": "software",
   "description": "<p>Tool to calculate the nutrient input by waterbirds, based on the tool Waterbirds v1.1 (2007) from S. Bauwer &amp; S. Hahn, Netherlands Institute of Ecology (NIOO-KNAW) and the related publications Hahn et al. (2007, Freshwater Biology) and Hahn et al. (2008, Freshwater Biology).<\/p>",
