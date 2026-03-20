@@ -5,9 +5,9 @@ Fulica atra;winter;0,50
 Anas crecca;spring;0,25
 Anas crecca;summer;0,00
 Anas crecca;winter;0,25
-Anas penelope;spring;1,00
-Anas penelope;summer;0,00
-Anas penelope;winter;1,00
+Mareca penelope;spring;1,00
+Mareca penelope;summer;0,00
+Mareca penelope;winter;1,00
 Anas acuta;spring;0,00
 Anas acuta;summer;0,00
 Anas acuta;winter;0,25
@@ -20,9 +20,9 @@ Anas platyrhynchos;winter;0,75
 Anas platyrhynchos domesticus;spring;0,50
 Anas platyrhynchos domesticus;summer;0,00
 Anas platyrhynchos domesticus;winter;0,75
-Alopochen aegyptiacus;spring;1,00
-Alopochen aegyptiacus;summer;1,00
-Alopochen aegyptiacus;winter;1,00
+Alopochen aegyptiaca;spring;1,00
+Alopochen aegyptiaca;summer;1,00
+Alopochen aegyptiaca;winter;1,00
 Anser albifrons;spring;1,00
 Anser albifrons;summer;1,00
 Anser albifrons;winter;1,00
@@ -32,9 +32,9 @@ Anser brachyrhynchus;winter;1,00
 Anser anser;spring;1,00
 Anser anser;summer;0,75
 Anser anser;winter;1,00
-Anser anser domesticus;spring;1,00
-Anser anser domesticus;summer;0,75
-Anser anser domesticus;winter;1,00
+Anser anser var. domestica;spring;1,00
+Anser anser var. domestica;summer;0,75
+Anser anser var. domestica;winter;1,00
 Anser erythropus;spring;1,00
 Anser erythropus;summer;1,00
 Anser erythropus;winter;1,00
@@ -62,15 +62,18 @@ Branta hrota;winter;0,00
 Branta leucopsis;spring;1,00
 Branta leucopsis;summer;1,00
 Branta leucopsis;winter;1,00
-Branta c. canadensis;spring;1,00
-Branta c. canadensis;summer;1,00
-Branta c. canadensis;winter;1,00
+Branta canadensis;spring;1,00
+Branta canadensis;summer;1,00
+Branta canadensis;winter;1,00
 Cygnus atratus;spring;0,25
 Cygnus atratus;summer;0,25
 Cygnus atratus;winter;0,25
 Cygnus columbianus;spring;1,00
 Cygnus columbianus;summer;0,00
 Cygnus columbianus;winter;0,75
+Cygnus columbianus bewickii;spring;1,00
+Cygnus columbianus bewickii;summer;0,00
+Cygnus columbianus bewickii;winter;0,75
 Cygnus olor;spring;0,50
 Cygnus olor;summer;0,25
 Cygnus olor;winter;1,00
