@@ -11,15 +11,15 @@ Mareca penelope;winter;1,00
 Anas acuta;spring;0,00
 Anas acuta;summer;0,00
 Anas acuta;winter;0,25
-Anas strepera;spring;0,00
-Anas strepera;summer;0,00
-Anas strepera;winter;0,25
+Mareca strepera;spring;0,00
+Mareca strepera;summer;0,00
+Mareca strepera;winter;0,25
 Anas platyrhynchos;spring;0,50
 Anas platyrhynchos;summer;0,00
 Anas platyrhynchos;winter;0,75
-Anas platyrhynchos domesticus;spring;0,50
-Anas platyrhynchos domesticus;summer;0,00
-Anas platyrhynchos domesticus;winter;0,75
+Anas platyrhynchos var. domestica;spring;0,50
+Anas platyrhynchos var. domestica;summer;0,00
+Anas platyrhynchos var. domestica;winter;0,75
 Alopochen aegyptiaca;spring;1,00
 Alopochen aegyptiaca;summer;1,00
 Alopochen aegyptiaca;winter;1,00
@@ -56,9 +56,9 @@ Anser caerulescens;winter;1,00
 Branta bernicla;spring;0,25
 Branta bernicla;summer;0,00
 Branta bernicla;winter;0,00
-Branta hrota;spring;0,25
-Branta hrota;summer;0,00
-Branta hrota;winter;0,00
+Branta bernicla hrota;spring;0,25
+Branta bernicla hrota;summer;0,00
+Branta bernicla hrota;winter;0,00
 Branta leucopsis;spring;1,00
 Branta leucopsis;summer;1,00
 Branta leucopsis;winter;1,00
