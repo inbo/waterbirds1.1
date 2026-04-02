@@ -34,7 +34,7 @@ test_that("test table var_species", {
   )
   expect_true(
     all(var_species_carnivores$species %in% breeding_carnivores$species)
-  )  #if not true, adapt code accordingly: breeding birds can only be calculated if species is present
+  )
   expect_true(all(inherits(var_species$body_mass, "integer")))
   expect_true(all(var_species$body_mass > 0))
   expect_true(

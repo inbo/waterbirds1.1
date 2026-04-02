@@ -1,82 +1,124 @@
-species;season;f_t
-Fulica atra;spring;0,25
-Fulica atra;summer;0,00
-Fulica atra;winter;0,50
-Anas crecca;spring;0,25
-Anas crecca;summer;0,00
-Anas crecca;winter;0,25
-Mareca penelope;spring;1,00
-Mareca penelope;summer;0,00
-Mareca penelope;winter;1,00
-Anas acuta;spring;0,00
-Anas acuta;summer;0,00
-Anas acuta;winter;0,25
-Mareca strepera;spring;0,00
-Mareca strepera;summer;0,00
-Mareca strepera;winter;0,25
-Anas platyrhynchos;spring;0,50
-Anas platyrhynchos;summer;0,00
-Anas platyrhynchos;winter;0,75
-Anas platyrhynchos var. domestica;spring;0,50
-Anas platyrhynchos var. domestica;summer;0,00
-Anas platyrhynchos var. domestica;winter;0,75
-Alopochen aegyptiaca;spring;1,00
-Alopochen aegyptiaca;summer;1,00
-Alopochen aegyptiaca;winter;1,00
-Anser albifrons;spring;1,00
-Anser albifrons;summer;1,00
-Anser albifrons;winter;1,00
-Anser brachyrhynchus;spring;1,00
-Anser brachyrhynchus;summer;1,00
-Anser brachyrhynchus;winter;1,00
-Anser anser;spring;1,00
-Anser anser;summer;0,75
-Anser anser;winter;1,00
-Anser anser var. domestica;spring;1,00
-Anser anser var. domestica;summer;0,75
-Anser anser var. domestica;winter;1,00
-Anser erythropus;spring;1,00
-Anser erythropus;summer;1,00
-Anser erythropus;winter;1,00
-Anser fabalis;spring;1,00
-Anser fabalis;summer;1,00
-Anser fabalis;winter;1,00
-Anser serrirostris;spring;1,00
-Anser serrirostris;summer;1,00
-Anser serrirostris;winter;1,00
-Anser indicus;spring;1,00
-Anser indicus;summer;1,00
-Anser indicus;winter;1,00
-Anser cygnoides;spring;1,00
-Anser cygnoides;summer;1,00
-Anser cygnoides;winter;1,00
-Anser caerulescens;spring;1,00
-Anser caerulescens;summer;1,00
-Anser caerulescens;winter;1,00
-Branta bernicla;spring;0,25
-Branta bernicla;summer;0,00
-Branta bernicla;winter;0,00
-Branta bernicla hrota;spring;0,25
-Branta bernicla hrota;summer;0,00
-Branta bernicla hrota;winter;0,00
-Branta leucopsis;spring;1,00
-Branta leucopsis;summer;1,00
-Branta leucopsis;winter;1,00
-Branta canadensis;spring;1,00
-Branta canadensis;summer;1,00
-Branta canadensis;winter;1,00
-Cygnus atratus;spring;0,25
-Cygnus atratus;summer;0,25
-Cygnus atratus;winter;0,25
-Cygnus columbianus;spring;1,00
-Cygnus columbianus;summer;0,00
-Cygnus columbianus;winter;0,75
-Cygnus columbianus bewickii;spring;1,00
-Cygnus columbianus bewickii;summer;0,00
-Cygnus columbianus bewickii;winter;0,75
-Cygnus olor;spring;0,50
-Cygnus olor;summer;0,25
-Cygnus olor;winter;1,00
-Cygnus cygnus;spring;0,50
-Cygnus cygnus;summer;0,00
-Cygnus cygnus;winter;0,75
+"species";"season";"f_t"
+"Fulica atra";"spring";0,25
+"Fulica atra";"summer";0
+"Fulica atra";"winter";0,5
+"Anas crecca";"spring";0,25
+"Anas crecca";"summer";0
+"Anas crecca";"winter";0,25
+"Mareca penelope";"spring";1
+"Mareca penelope";"summer";0
+"Mareca penelope";"winter";1
+"Anas acuta";"spring";0
+"Anas acuta";"summer";0
+"Anas acuta";"winter";0,25
+"Mareca strepera";"spring";0
+"Mareca strepera";"summer";0
+"Mareca strepera";"winter";0,25
+"Anas platyrhynchos";"spring";0,5
+"Anas platyrhynchos";"summer";0
+"Anas platyrhynchos";"winter";0,75
+"Anas platyrhynchos var. domestica";"spring";0,5
+"Anas platyrhynchos var. domestica";"summer";0
+"Anas platyrhynchos var. domestica";"winter";0,75
+"Alopochen aegyptiaca";"spring";1
+"Alopochen aegyptiaca";"summer";1
+"Alopochen aegyptiaca";"winter";1
+"Anser albifrons";"spring";1
+"Anser albifrons";"summer";1
+"Anser albifrons";"winter";1
+"Anser brachyrhynchus";"spring";1
+"Anser brachyrhynchus";"summer";1
+"Anser brachyrhynchus";"winter";1
+"Anser anser";"spring";1
+"Anser anser";"summer";0,75
+"Anser anser";"winter";1
+"Anser anser var. domestica";"spring";1
+"Anser anser var. domestica";"summer";0,75
+"Anser anser var. domestica";"winter";1
+"Anser erythropus";"spring";1
+"Anser erythropus";"summer";1
+"Anser erythropus";"winter";1
+"Anser fabalis";"spring";1
+"Anser fabalis";"summer";1
+"Anser fabalis";"winter";1
+"Anser serrirostris";"spring";1
+"Anser serrirostris";"summer";1
+"Anser serrirostris";"winter";1
+"Anser indicus";"spring";1
+"Anser indicus";"summer";1
+"Anser indicus";"winter";1
+"Anser cygnoides";"spring";1
+"Anser cygnoides";"summer";1
+"Anser cygnoides";"winter";1
+"Anser caerulescens";"spring";1
+"Anser caerulescens";"summer";1
+"Anser caerulescens";"winter";1
+"Branta bernicla";"spring";0,25
+"Branta bernicla";"summer";0
+"Branta bernicla";"winter";0
+"Branta bernicla hrota";"spring";0,25
+"Branta bernicla hrota";"summer";0
+"Branta bernicla hrota";"winter";0
+"Branta leucopsis";"spring";1
+"Branta leucopsis";"summer";1
+"Branta leucopsis";"winter";1
+"Branta canadensis";"spring";1
+"Branta canadensis";"summer";1
+"Branta canadensis";"winter";1
+"Cygnus atratus";"spring";0,25
+"Cygnus atratus";"summer";0,25
+"Cygnus atratus";"winter";0,25
+"Cygnus columbianus";"spring";1
+"Cygnus columbianus";"summer";0
+"Cygnus columbianus";"winter";0,75
+"Cygnus columbianus bewickii";"spring";1
+"Cygnus columbianus bewickii";"summer";0
+"Cygnus columbianus bewickii";"winter";0,75
+"Cygnus olor";"spring";0,5
+"Cygnus olor";"summer";0,25
+"Cygnus olor";"winter";1
+"Cygnus cygnus";"spring";0,5
+"Cygnus cygnus";"summer";0
+"Cygnus cygnus";"winter";0,75
+"Tadorna ferruginea";"spring";0,75
+"Tadorna ferruginea";"summer";0,5
+"Tadorna ferruginea";"winter";1
+"Tadorna cana";"spring";0,75
+"Tadorna cana";"summer";0,5
+"Tadorna cana";"winter";1
+"Anas bahamensis";"spring";1
+"Anas bahamensis";"summer";0
+"Anas bahamensis";"winter";1
+"Branta canadensis canadensis";"spring";1
+"Branta canadensis canadensis";"summer";1
+"Branta canadensis canadensis";"winter";1
+"Sarkidiornis melanotos";"spring";1
+"Sarkidiornis melanotos";"summer";0,75
+"Sarkidiornis melanotos";"winter";1
+"Branta hutchinsii hutchinsii";"spring";1
+"Branta hutchinsii hutchinsii";"summer";1
+"Branta hutchinsii hutchinsii";"winter";1
+"Branta hutchinsii minima";"spring";1
+"Branta hutchinsii minima";"summer";1
+"Branta hutchinsii minima";"winter";1
+"Branta hutchinsii";"spring";1
+"Branta hutchinsii";"summer";1
+"Branta hutchinsii";"winter";1
+"Chloephaga picta";"spring";1
+"Chloephaga picta";"summer";1
+"Chloephaga picta";"winter";1
+"Chenonetta jubata";"spring";1
+"Chenonetta jubata";"summer";1
+"Chenonetta jubata";"winter";1
+"Branta ruficollis";"spring";1
+"Branta ruficollis";"summer";1
+"Branta ruficollis";"winter";1
+"Anser rossii";"spring";1
+"Anser rossii";"summer";1
+"Anser rossii";"winter";1
+"Cygnus columbianus columbianus";"spring";1
+"Cygnus columbianus columbianus";"summer";0
+"Cygnus columbianus columbianus";"winter";0,75
+"Anser cygnoides var. domestica";"spring";1
+"Anser cygnoides var. domestica";"summer";0,75
+"Anser cygnoides var. domestica";"winter";1
