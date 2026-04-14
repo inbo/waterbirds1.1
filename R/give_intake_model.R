@@ -52,7 +52,7 @@
 #'
 #' @importFrom assertthat assert_that has_name
 #' @importFrom dplyr across bind_rows count filter group_by left_join mutate
-#'   select summarise ungroup
+#'   reframe select ungroup
 #' @importFrom lubridate days_in_month
 #' @importFrom rlang .data
 #' @importFrom tidyselect contains
@@ -201,11 +201,9 @@ give_intake_model <- function(
         )
     ) |>
     ungroup() |>
-    group_by(.data$location, .data$species, .data$year) |>
-    summarise(
-      across(contains("_tot_"), sum), .groups = "keep"
-    ) |>
-    ungroup()
+    reframe(
+      across(contains("_tot_"), sum), .by = c("location", "species", "year")
+    )
   if (all(result$location == "no location added")) {
     result$location <- NULL
   }
