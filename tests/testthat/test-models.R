@@ -11,7 +11,7 @@ abundancies_1location <- data.frame(
 
 abundancies_2locations <- abundancies_1location |>
   bind_rows(
-     data.frame(
+    data.frame(
       year = c(rep(2020, 5), rep(2021, 5), rep(2022, 5)),
       month = rep(1:5, 3),
       species = "Anas acuta",
