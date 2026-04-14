@@ -152,7 +152,7 @@ give_dropping_model <- function(
     left_join(season_def, by = "month")
   result <- bird_abundance |>
     filter(.data$diet == "herbivore") |>
-    group_by(.data$location) |>
+    group_by(.data$location, .data$year, .data$month) |>
     mutate(
       give_dropping_herbivores(
         data.frame(
@@ -171,7 +171,7 @@ give_dropping_model <- function(
     bind_rows(
       bird_abundance |>
         filter(.data$diet != "herbivore") |>
-        group_by(.data$location) |>
+        group_by(.data$location, .data$year, .data$month) |>
         mutate(
           give_excretion_carnivores(
             data.frame(

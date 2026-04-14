@@ -185,7 +185,11 @@ give_intake_herbivores <- function(
       length(type_food) == 1
   )
   assert_that(all(type_food %in% var_food$food))
-  species_abundance$type_food <- type_food
+  if (nrow(species_abundance) > 0) {
+    species_abundance$type_food <- type_food
+  } else {
+    species_abundance$type_food <- character(0)
+  }
 
   assert_that(inherits(foraging_time, "numeric") |
                 inherits(foraging_time, "numeric"))
