@@ -21,7 +21,7 @@ abundancies_2locations <- abundancies_1location |>
   )
 
 
-test_that("results should be consistent", {
+test_that("results are consistent", {
   expect_equal(
     give_intake_model(abundancies_1location),
     give_intake_model(abundancies_2locations) |>
