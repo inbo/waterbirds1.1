@@ -103,7 +103,7 @@ Freshwater Biology 53: 181-193.
 }
 }
 \seealso{
-Other herbivores: 
-\code{\link{give_dropping_herbivores}()}
+Other herbivores:
+\code{\link[=give_dropping_herbivores]{give_dropping_herbivores()}}
 }
 \concept{herbivores}

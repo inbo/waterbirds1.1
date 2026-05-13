@@ -87,7 +87,7 @@ Freshwater Biology 53: 181-193.
 }
 }
 \seealso{
-Other herbivores: 
-\code{\link{give_intake_herbivores}()}
+Other herbivores:
+\code{\link[=give_intake_herbivores]{give_intake_herbivores()}}
 }
 \concept{herbivores}

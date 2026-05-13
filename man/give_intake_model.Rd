@@ -126,7 +126,7 @@ Freshwater Biology 53: 181-193.
 }
 }
 \seealso{
-Other generic: 
-\code{\link{give_dropping_model}()}
+Other generic:
+\code{\link[=give_dropping_model]{give_dropping_model()}}
 }
 \concept{generic}
