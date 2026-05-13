@@ -1,17 +1,38 @@
 Package: waterbirds1.1
 Title: Nutrient Input by Waterbirds
-Version: 0.0.0
+Version: 0.0.1
 Authors@R: c(
     person("Els", "Lommelen", , "els.lommelen@inbo.be", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-3481-5684", affiliation = "Instituut voor Natuur- en Bosonderzoek (INBO)")),
-    person("Research Institute for Nature and Forest (INBO)", , , "info@inbo.be", role = c("cph", "fnd"))
+           comment = c(ORCID = "0000-0002-3481-5684", affiliation = "Research Institute for Nature and Forest (INBO)")),
+    person("Research Institute for Nature and Forest (INBO)", , , "info@inbo.be", role = c("cph", "fnd", "pbl"),
+           comment = c(ROR = "00j54wy13"))
   )
-Description: Tool to calculate the nutrient input by waterbirds, based on the tool Waterbirds v1.1 (2007) from S. Bauwer & S. Hahn, Netherlands Institute of Ecology (NIOO-KNAW) and the related publications Hahn et al. (2007, Freshwater Biology) and Hahn et al. (2008, Freshwater Biology).
+Description: Tool to calculate the nutrient input by waterbirds, based on
+    the tool Waterbirds v1.1 (2007) from S. Bauwer & S. Hahn, Netherlands
+    Institute of Ecology (NIOO-KNAW) and the related publications Hahn et
+    al. (2007, Freshwater Biology) and Hahn et al. (2008, Freshwater
+    Biology).
 License: GPL-3
 URL: https://github.com/inbo/waterbirds1.1
 BugReports: https://github.com/inbo/waterbirds1.1/issues
-Encoding: UTF-8
+Imports:
+    assertthat,
+    dplyr,
+    lubridate,
+    rlang,
+    tidyselect,
+    utils
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    tidyr
+VignetteBuilder:
+    knitr
+Config/checklist/communities: inbo
 Config/checklist/keywords: waterbirds; nutrients
+Config/roxygen2/version: 8.0.0
+Config/testthat/edition: 3
+Encoding: UTF-8
 Language: en-GB
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2

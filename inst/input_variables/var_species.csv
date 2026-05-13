@@ -1,0 +1,70 @@
+"species";"common_name";"body_mass";"diet";"loader";"nl_name";"reference"
+"Fulica atra";"Eurasian Coot";782;"herbivore";NA;"Meerkoet";"Hahn et al., 2008"
+"Anas crecca";"Common Teal";315;"herbivore";NA;"Wintertaling";"Hahn et al., 2008"
+"Mareca penelope";"Eurasian Wigeon";716;"herbivore";NA;"Smient";"Hahn et al., 2008"
+"Anas acuta";"Northern Pintail";793;"herbivore";NA;"Pijlstaart";"Hahn et al., 2008"
+"Mareca strepera";"Gadwall";774;"herbivore";NA;"Krakeend";"Hahn et al., 2008"
+"Anas platyrhynchos";"Mallard";1078;"herbivore";NA;"Wilde eend";"Hahn et al., 2008"
+"Anas platyrhynchos var. domestica";"Feral duck";1078;"herbivore";NA;"Parkeend";"Hahn et al., 2008"
+"Alopochen aegyptiaca";"Egyptian Goose";1863;"herbivore";NA;"Nijlgans";"Hahn et al., 2008"
+"Anser albifrons";"Greater White-fronted Goose";2018;"herbivore";NA;"Kolgans";"Hahn et al., 2008"
+"Anser brachyrhynchus";"Pink-footed Goose";2344;"herbivore";NA;"Kleine rietgans";"Hahn et al., 2008"
+"Anser anser";"Greylag Goose";3465;"herbivore";NA;"Grauwe gans";"Hahn et al., 2008"
+"Anser anser var. domestica";"Feral goose";3465;"herbivore";NA;"Parkgans";"Hahn et al., 2008"
+"Anser erythropus";"Lesser White-fronted Goose";1410;"herbivore";NA;"Dwerggans";"Hahn et al., 2008"
+"Anser fabalis";"Taiga Bean Goose";3020;"herbivore";NA;"Taigarietgans";"Hahn et al., 2008"
+"Anser serrirostris";"Tundra Bean Goose";2521;"herbivore";NA;"Toendrarietgans";"Hahn et al., 2008"
+"Anser indicus";"Bar-headed Goose";2600;"herbivore";NA;"Indische streepgans";"Hahn et al., 2008"
+"Anser cygnoides";"Swan Goose";3150;"herbivore";NA;"zwaangans";"Hahn et al., 2008"
+"Anser caerulescens";"Snow Goose";2631;"herbivore";NA;"sneeuwgans";"Hahn et al., 2008"
+"Branta bernicla";"Brent goose";1464;"herbivore";NA;"Rotgans";"Hahn et al., 2008"
+"Branta bernicla hrota";"Pale-Bellied Brent Goose";1489;"herbivore";NA;"Witbuikrotgans";"Hahn et al., 2008"
+"Branta leucopsis";"Barnacle Goose";1586;"herbivore";NA;"Brandgans";"Hahn et al., 2008"
+"Branta canadensis";"Canada Goose";4635;"herbivore";NA;"Canadese gans";"Hahn et al., 2008"
+"Cygnus atratus";"Black Swan";5650;"herbivore";NA;"Zwarte zwaan";"Hahn et al., 2008"
+"Cygnus columbianus";"Tundra Swan";6050;"herbivore";NA;"Fluitzwaan";"Hahn et al., 2008"
+"Cygnus columbianus bewickii";"Tundra Swan";6050;"herbivore";NA;"Kleine zwaan";"Hahn et al., 2008"
+"Cygnus olor";"Mute Swan";10750;"herbivore";NA;"Knobbelzwaan";"Hahn et al., 2008"
+"Cygnus cygnus";"Whooper Swan";9150;"herbivore";NA;"Wilde zwaan";"Hahn et al., 2008"
+"Ardea cinerea";"Grey Heron";1433;"vertebrates";"internal";"Blauwe reiger";"Hahn et al., 2007"
+"Phalacrocorax carbo";"Great Cormorant";2254;"vertebrates";"internal";"Aalscholver";"Hahn et al., 2007"
+"Hydrocoloeus minutus";"Little Gull";99;"mix (in)vertebrates";"external";"Dwergmeeuw";"Hahn et al., 2007"
+"Chroicocephalus ridibundus";"Black-headed Gull";275;"mix (in)vertebrates";"external";"Kokmeeuw";"Hahn et al., 2007"
+"Ichthyaetus melanocephalus";"Mediterranean Gull";273;"mix (in)vertebrates";"external";"Zwartkopmeeuw";"Hahn et al., 2007"
+"Larus canus";"Mew Gull";387;"mix (in)vertebrates";"external";"Stormmeeuw";"Hahn et al., 2007"
+"Larus fuscus";"Lesser Black-backed Gull";792;"mix (in)vertebrates";"external";"Kleine mantelmeeuw";"Hahn et al., 2007"
+"Larus cachinnans";"Caspian Gull";916;"mix (in)vertebrates";"external";"Pontische meeuw";"Hahn et al., 2007"
+"Larus argentatus";"Herring Gull";958;"vertebrates";"external";"Zilvermeeuw";"Hahn et al., 2007"
+"Larus michahellis";"Yellow-legged Gull";1154;"mix (in)vertebrates";"external";"Geelpootmeeuw";"Hahn et al., 2007"
+"Larus marinus";"Great Black-backed Gull";1600;"mix (in)vertebrates";"external";"Grote mantelmeeuw";"Hahn et al., 2007"
+"Rissa tridactyla";"Black-legged Kittiwake";418;"vertebrates";"internal";"Drieteenmeeuw";"Hahn et al., 2007"
+"Sterna paradisaea";"Arctic Tern";110;"vertebrates";"internal";"Noordse stern";"Hahn et al., 2007"
+"Sterna hirundo";"Common Tern";133;"vertebrates";"internal";"Visdief";"Hahn et al., 2007"
+"Thalasseus sandvicensis";"Sandwich Tern";237;"vertebrates";"internal";"Grote stern";"Hahn et al., 2007"
+"Tadorna ferruginea";"Ruddy Shelduck";1200;"herbivore";NA;"Casarca";NA
+"Tadorna tadorna";"Common Shelduck";1062;"mix (in)vertebrates";"external";"Bergeend";"Bron: Leenhuis 2021"
+"Tadorna cana";"South African Shelduck";1000;"herbivore";NA;"Kaapse casarca";NA
+"Anas bahamensis";"White-cheeked Pintail";900;"herbivore";NA;"Bahamapijlstaart";NA
+"Sarkidiornis melanotos";"Knob-billed Duck";2600;"herbivore";NA;"Knobbeleend";NA
+"Branta canadensis canadensis";"Atlantic Canada Goose";4635;"herbivore";NA;"Grote Canadese gans";NA
+"Branta hutchinsii hutchinsii";"Richardson's Cackling Goose";3000;"herbivore";NA;"Kleine Canadese gans";NA
+"Branta hutchinsii minima";"Small Cackling Goose";1600;"herbivore";NA;"Kleinste Canadese gans";NA
+"Branta hutchinsii";"Cackling Goose";2500;"herbivore";NA;"Kleine Canadese gans";NA
+"Chloephaga picta";"Upland Goose";3200;"herbivore";NA;"Maghlaengans";NA
+"Chenonetta jubata";"Australian Wood Duck";800;"herbivore";NA;"Manengans";NA
+"Branta ruficollis";"Red-breasted Goose";1300;"herbivore";NA;"Roodhalsgans";NA
+"Anser rossii";"Ross's Goose";1600;"herbivore";NA;"Ross gans";NA
+"Cygnus columbianus columbianus";"Whistling Swan";6000;"herbivore";NA;"Fluitzwaan";NA
+"Anser cygnoides var. domestica";"Chinese Goose";3500;"herbivore";NA;"Chinese knobbelgans";NA
+"Vanellus vanellus";"Northern Lapwing";218;"mix (in)vertebrates";"internal";"Kievit";"Bron: Leenhuis 2021"
+"Phalacrocorax carbo sinensis";"Continental Great Cormorant";2600;"vertebrates";"internal";"Aalscholver";NA
+"Larus glaucoides";"Iceland Gull";1100;"mix (in)vertebrates";"external";"Grote burgemeester";NA
+"Larus fuscus intermedius";"Norwegian Lesser Black-backed Gull";900;"mix (in)vertebrates";"external";"Kleine burgemeester";NA
+"Ardea alba";"Great Egret";1000;"vertebrates";"internal";"Grote zilverreiger";NA
+"Egretta garzetta";"Little Egret";527;"mix (in)vertebrates";"internal";"Kleine zilverreiger";NA
+"Ardea ibis";"Western Cattle Egret";400;"mix (in)vertebrates";"internal";"Zwarte ibis";NA
+"Nycticorax nycticorax";"Black-crowned Night Heron";800;"vertebrates";"internal";"Kwak";NA
+"Ardea purpurea";"Purple Heron";874;"vertebrates";"internal";"Purperreiger";"Bron: Leenhuis 2021"
+"Limosa limosa";"Black-tailed Godwit";315;"mix (in)vertebrates";"internal";"Grutto";"Bron: Leenhuis 2021"
+"Numenius arquata";"Eurasian Curlew";725;"mix (in)vertebrates";"internal";"Wulp";"Bron: Leenhuis 2022"
+"Pluvialis apricaria";"European Golden Plover";215;"mix (in)vertebrates";"internal";"Goudplevier";"Bron: Leenhuis 2023"
