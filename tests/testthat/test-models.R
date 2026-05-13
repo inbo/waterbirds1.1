@@ -257,7 +257,7 @@ test_that("results are similar to tool", {
           rep("Anas platyrhynchos", 24),
           rep("Vanellus vanellus", 24)
         ),
-        year = c(rep(2020, 12), rep(2021,12)),
+        year = c(rep(2020, 12), rep(2021, 12)),
         month = 1:12,
         location = "A",
         n_individuals = c(rep(10, 12), rep(30, 12))
@@ -311,7 +311,7 @@ test_that("results are similar to tool", {
           rep("Anas platyrhynchos", 24),
           rep("Vanellus vanellus", 24)
         ),
-        year = c(rep(2020, 12), rep(2021,12)),
+        year = c(rep(2020, 12), rep(2021, 12)),
         month = 1:12,
         location = "A",
         n_individuals = c(rep(10, 12), rep(30, 12))
