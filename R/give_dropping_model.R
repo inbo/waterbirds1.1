@@ -35,7 +35,7 @@
 #'
 #' @importFrom assertthat assert_that has_name
 #' @importFrom dplyr across bind_rows count filter group_by left_join mutate
-#'   reframe select ungroup
+#' @importFrom dplyr reframe select ungroup
 #' @importFrom lubridate days_in_month
 #' @importFrom rlang .data
 #' @importFrom tidyselect contains
